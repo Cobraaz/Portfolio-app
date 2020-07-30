@@ -1,7 +1,16 @@
 import React from "react";
 import BaseLayout from "../components/layouts/BaseLayout";
 import { Container, Row, Col } from "reactstrap";
+import Typed from "react-typed";
 
+const ROLES = [
+  "Developer",
+  "MERN",
+  "React.js",
+  "Node.js",
+  "Team Player",
+  "Tech Lover",
+];
 class Index extends React.Component {
   render() {
     return (
@@ -37,6 +46,17 @@ class Index extends React.Component {
                     informed, collaborate and discover projects I was working on
                     through the years!
                   </h1>
+                  <Typed
+                    loop
+                    typeSpeed={70}
+                    backSpeed={70}
+                    strings={ROLES}
+                    backDelay={1000}
+                    loopCount={0}
+                    showCursor
+                    className="self-typed"
+                    cursorChar="|"
+                  />
                 </div>
                 <div className="hero-welcome-bio">
                   <h1>Let's take a look on my work.</h1>
