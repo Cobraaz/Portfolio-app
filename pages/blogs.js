@@ -1,14 +1,17 @@
 import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from '@/components/BasePage';
-const Blogs = () => {
+import BasePage from "@/components/BasePage";
+import { useGetUser } from "@/actions/user";
 
-    return (
-      <BaseLayout>
-       <BasePage>
-          <h1>I am Blog Page</h1>
-        </BasePage>
-      </BaseLayout>
-    );
-  }
+const Blogs = () => {
+  const { data, loading } = useGetUser();
+
+  return (
+    <BaseLayout user={data} loading={loading}>
+      <BasePage>
+        <h1>I am Blog Page</h1>
+      </BasePage>
+    </BaseLayout>
+  );
+};
 
 export default Blogs;
