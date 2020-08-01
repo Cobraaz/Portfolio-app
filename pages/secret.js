@@ -6,7 +6,7 @@ const Secret = ({ user, loading }) => {
   return (
     <BaseLayout user={user} loading={loading}>
       <BasePage>
-        <h1>I am Secret Page - Hello {user.nickname}</h1>
+        <h1>I am Secret Page - Hello {user.name}</h1>
       </BasePage>
     </BaseLayout>
   );
@@ -25,4 +25,4 @@ const Secret = ({ user, loading }) => {
 // const withAuth = (Component) => props =>
 //   <Component title="Hello World" {...props}/>
 
-export default withAuth(Secret);
+export default withAuth(Secret)();
