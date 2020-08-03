@@ -22,7 +22,7 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
     );
     if (isConfirm) {
       await deletePortfolio(portfolioId);
-      setPortfolios(portfolios.filter(p => p._id !== portfolioId));
+      setPortfolios(portfolios.filter((p) => p._id !== portfolioId));
     }
   };
 
@@ -79,6 +79,7 @@ export async function getStaticProps() {
   const portfolios = json.data;
   return {
     props: { portfolios },
+    revalidate: 1,
   };
 }
 
