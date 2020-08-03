@@ -3,7 +3,6 @@ import BasePage from "@/components/BasePage";
 import { authorizeUser, withAuth } from "@/utils/auth0";
 
 const OnlyAdminSSR = ({ user, title }) => {
-  debugger;
   return (
     <BaseLayout user={user} loading={false}>
       <BasePage>

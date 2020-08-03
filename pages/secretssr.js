@@ -3,7 +3,6 @@ import BasePage from "@/components/BasePage";
 import { authorizeUser, withAuth } from "@/utils/auth0";
 
 const SecretSSR = ({ user, title }) => {
-  debugger;
   return (
     <BaseLayout user={user} loading={false}>
       <BasePage>
@@ -23,7 +22,6 @@ const SecretSSR = ({ user, title }) => {
 // }
 
 const getTitle = () => {
-  debugger;
   return new Promise((res) => {
     setTimeout(() => {
       res({ title: "My new title!" });
@@ -32,7 +30,6 @@ const getTitle = () => {
 };
 
 export const getServerSideProps = withAuth(async ({ req, res }, user) => {
-  debugger;
   const title = await getTitle();
   return title;
 })();
