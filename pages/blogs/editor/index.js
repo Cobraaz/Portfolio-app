@@ -17,8 +17,9 @@ const BlogEditor = ({ user, loading }) => {
     const createdBlog = await createBlog(data);
     router.push("/blogs/editor/[id]", `/blogs/editor/${createdBlog._id}`);
   };
+
   if (error) {
-    toast.error(error.message);
+    toast.error(error);
   }
 
   return (

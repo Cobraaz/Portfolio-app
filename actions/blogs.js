@@ -3,8 +3,10 @@ import { useApiHandler, fetcher } from "actions";
 import useSWR from "swr";
 
 const createBlog = (data) => axios.post("/api/v1/blogs", data);
+const updateBlog = (id, data) => axios.patch(`/api/v1/blogs/${id}`, data);
 
 export const useCreateBlog = () => useApiHandler(createBlog);
+export const useUpdateBlog = () => useApiHandler(updateBlog);
 
 export const useGetBlog = (id) => {
   const { data, error, ...rest } = useSWR(
