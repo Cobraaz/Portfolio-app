@@ -1,18 +1,74 @@
+import React from "react";
 import { Container } from "reactstrap";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+const PageHeader = ({ header }) => (
+  <div className="page-header">
+    <h1 className="page-header-title">{header}</h1>
+  </div>
+);
 
 const BasePage = (props) => {
-  const { className = "", header, children } = props;
+  const router = useRouter();
+  const {
+    noWrapper,
+    indexPage,
+    className = "",
+    title = "Portfolio - Anuj Bansal",
+    metaDescription = "Hi, I’m Anuj Bansal. I'm a multi-talented human with over 6+ months of experiences in Reactjs and Node.js. I am currently persuing Master's degree in Computer Application. You can also call me a product designer, experience designer,interaction, UI, UX or by any other market defined function-title.",
+    canonicalPath,
+    header,
+    children,
+  } = props;
+
+  const pageType = indexPage ? "index-page" : "base-page";
+  const Wrapper = noWrapper ? React.Fragment : Container;
+
   return (
-    <div className={`base-page ${className}`}>
-      <Container>
-        {header && (
-          <div className="page-header">
-            <h1 className="page-header-title">{header}</h1>
-          </div>
-        )}
-        {children}
-      </Container>
-    </div>
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" key="description" content={metaDescription} />
+        <meta name="title" key="title" content={title} />
+        <meta property="og:title" key="og:title" content={title} />
+        <meta property="og:locale" key="og:locale" content="en_IN" />
+        <meta
+          property="og:url"
+          key="og:url"
+          content={`${process.env.BASE_URL}${router.asPath}`}
+        />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content={metaDescription}
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={`${process.env.BASE_URL}/images/section-1.png`}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.BASE_URL}${
+            canonicalPath ? canonicalPath : router.asPath
+          }`}
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
+          rel="stylesheet"
+        ></link>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+      </Head>
+      <div className={`${pageType} ${className}`}>
+        <Wrapper>
+          {header && <PageHeader header={header} />}
+          {children}
+        </Wrapper>
+      </div>
+    </>
   );
 };
 
