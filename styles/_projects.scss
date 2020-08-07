@@ -1,0 +1,76 @@
+.projects-page {
+  min-height: 100vh;
+  padding: 110px 0 0;
+  // background-color: white;
+
+  .project-card {
+    // background-image: linear-gradient(45deg, #1c92d2 0%, #f2fcfe 100%);
+    // background: linear-gradient(to left, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(89deg, #4f90cd 0%, #1d4d6e 100%); /* w3c */
+    // background: linear-gradient(to bottom, #99f2c8, #1f4037);
+    // background: linear-gradient(to bottom, #73c8a9, #373b44);
+    // background: linear-gradient(to bottom, #42275a, #734b6d);
+    // background: linear-gradient(45deg, #141e30, #243b55);
+    // background-color: #4f90cd;
+    border: none;
+    color: #ecedee;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+    margin-bottom: 20px;
+
+    &:hover {
+      // cursor: pointer;
+      transform: translateY(-5px);
+    }
+
+    &:hover .readMore:before {
+      background: linear-gradient(to right, #ffffff 0%, #ffffff 100%);
+    }
+
+    &-header {
+      padding: 3px;
+      padding-right: 7px;
+      text-align: right;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 17px;
+    }
+
+    &-title {
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    &-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 50px;
+      display: block;
+    }
+  }
+
+  .create-port-btn {
+    margin-bottom: 20px;
+  }
+}
+.project-header-title {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #ecedee;
+}
+.projects-cover {
+  // background: linear-gradient(to bottom, #005aa7, #fffde4);
+  // background: linear-gradient(89deg, #20232a 0%, #096fb9 100%); /* w3c */
+  // background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
+  background-image: linear-gradient(45deg, #00aeef 0%, #096fb9 100%);
+  // background-image: linear-gradient(45deg, #20232a 0%, #0aeef9 100%);
+  overflow: hidden;
+  position: relative;
+}

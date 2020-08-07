@@ -9,6 +9,16 @@
     padding: 30px;
   }
 
+  &.with-bg-about {
+    background-color: #7510f7;
+    padding: 30px;
+  }
+
+  &.with-bg-cv {
+    background-color: #4f90cd;
+    padding: 30px;
+  }
+
   .port-navbar {
     &-brand {
       color: white;
@@ -31,12 +41,12 @@
       text-transform: uppercase;
 
       &.active {
-        color: #dba919;
+        color: #61dafb;
       }
 
       &:hover,
       &:focus {
-        color: #dba919;
+        color: #61dafb;
       }
     }
   }

@@ -4,9 +4,9 @@ import withAuth from "hoc/withAuth";
 import { Row, Col, Button } from "reactstrap";
 import Masthead from "components/shared/Masthead";
 import PortDropdown from "components/shared/Dropdown";
+import Link from "next/link";
 import { useUpdateBlog, useGetUserBlogs } from "actions/blogs";
 import { toast } from "react-toastify";
-import Link from "next/link";
 
 const Dashboard = ({ user, loading }) => {
   const [updateBlog] = useUpdateBlog();
@@ -32,18 +32,14 @@ const Dashboard = ({ user, loading }) => {
         key: `${blog._id}-published`,
         text: option.view,
         handlers: {
-          onClick: () => {
-            changeBlogStatus(blog._id, option.value);
-          },
+          onClick: () => changeBlogStatus(blog._id, option.value),
         },
       },
       {
         key: `${blog._id}-delete`,
         text: "Delete",
         handlers: {
-          onClick: () => {
-            changeBlogStatus(blog._id, "deleted");
-          },
+          onClick: () => changeBlogStatus(blog._id, "deleted"),
         },
       },
     ];
@@ -67,7 +63,7 @@ const Dashboard = ({ user, loading }) => {
 
   return (
     <BaseLayout navClass="transparent" user={user} loading={loading}>
-      <Masthead imagePath="/images/home-bg.jpg">
+      <Masthead>
         <h1>Blogs Dashboard</h1>
         <span className="subheading">
           Let's write some nice blog today{" "}

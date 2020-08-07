@@ -6,7 +6,7 @@ import { Row, Col } from "reactstrap";
 const Cv = () => {
   const { data, loading } = useGetUser();
   return (
-    <BaseLayout user={data} loading={loading}>
+    <BaseLayout user={data} loading={loading} navClass="with-bg-cv">
       <BasePage title="My Experiences - Anuj Bansal">
         <Row>
           <Col md={{ size: 8, offset: 2 }}>

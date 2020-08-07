@@ -27,6 +27,8 @@
 }
 
 .about-page {
+  padding-bottom: 20px !important;
+
   .left-side {
     margin-top: 10vh;
     color: black;
@@ -44,16 +46,50 @@
     @include animation-delay(0.7s);
     font-size: 42px;
     font-weight: bold;
+    color: #7510f7;
   }
 
   .subtitle {
     @include animation-delay(2.2s);
     font-size: 33px;
+    color: #7510f7;
   }
 
   .subsubTitle {
     @include animation-delay(3.6s);
     font-size: 18px;
+  }
+
+  .nounderline {
+    text-decoration: none !important;
+  }
+
+  .icons {
+    @include animation-delay(4.5s);
+    font-size: 33px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+  }
+  .icons:hover {
+    background-color: #7510f7;
+    border-radius: 50%;
+    padding: 10px;
+    transform: translateY(-100px);
+    color: #ffff;
+  }
+
+  .code-icons {
+    @include animation-delay(4.5s);
+    font-size: 50px;
+    color: #7510f7;
+  }
+  .code-title {
+    @include animation-delay(4.5s);
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .code-subsubtitle {
+    @include animation-delay(4.5s);
   }
 
   @keyframes fadein {

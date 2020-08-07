@@ -3,8 +3,11 @@ import BasePage from "@/components/BasePage";
 import { useGetUser } from "@/actions/user";
 import Masthead from "components/shared/Masthead";
 import { Row, Col } from "reactstrap";
+
 import BlogItem from "components/BlogItem";
 import BlogApi from "lib/api/blogs";
+
+
 
 const Blogs = ({ blogs }) => {
   const { data, loading } = useGetUser();
@@ -15,7 +18,7 @@ const Blogs = ({ blogs }) => {
       user={data}
       loading={loading}
     >
-      <Masthead imagePath="/images/home-bg.jpg">
+      <Masthead>
         <h1>Fresh Blogs</h1>
         <span className="subheading">Programming, travelling...</span>
       </Masthead>

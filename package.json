@@ -1,6 +1,6 @@
 {
-  "name": "portfolio-anujbansal",
-  "version": "0.1.0",
+  "name": "portfolio-anujbansal4",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "node server.js",
@@ -19,10 +19,13 @@
     "react-datepicker": "^3.1.3",
     "react-dom": "16.13.1",
     "react-hook-form": "^6.2.0",
+    "react-particles-js": "^3.3.0",
     "react-resize-detector": "^5.0.6",
+    "react-slideshow-image": "^3.0.2",
     "react-toastify": "^6.0.8",
     "react-typed": "^1.2.0",
     "reactstrap": "^8.5.1",
+    "remixicon": "^2.5.0",
     "sass": "^1.26.10",
     "slate-simple-editor": "git+https://github.com/Jerga99/slate-simple-editor.git",
     "swr": "^0.3.0"

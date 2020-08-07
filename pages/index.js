@@ -4,15 +4,8 @@ import { Container, Row, Col } from "reactstrap";
 import BasePage from "@/components/BasePage";
 import Typed from "react-typed";
 import { useGetUser } from "@/actions/user";
-
-const ROLES = [
-  "Developer",
-  "MERN",
-  "React.js",
-  "Node.js",
-  "Team Player",
-  "Tech Lover",
-];
+import Particles from "react-particles-js";
+import { ROLES, particlesOptionsIndex } from "helpers";
 
 const Index = () => {
   const [isFlipping, setIsFlipping] = useState(false);
@@ -37,6 +30,7 @@ const Index = () => {
       navClass="transparent"
       className={`cover ${isFlipping ? "cover-orange" : "cover-blue"}`}
     >
+      <Particles className="particles" params={particlesOptionsIndex} />
       <BasePage indexPage title="Portfolio - Anuj Bansal">
         <div className="main-section">
           <div className="background-image">

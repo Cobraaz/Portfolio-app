@@ -98,7 +98,7 @@ const Header = ({ user, loading, className }) => {
           <BsNavBrand />
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
+            <Nav className="mr-auto ml-auto" navbar>
               <NavItem className="port-navbar-item">
                 <BsNavLink href="/" title="Home" />
               </NavItem>
@@ -110,6 +110,9 @@ const Header = ({ user, loading, className }) => {
               </NavItem>
               <NavItem className="port-navbar-item">
                 <BsNavLink href="/blogs" title="Blogs" />
+              </NavItem>
+              <NavItem className="port-navbar-item">
+                <BsNavLink href="/projects" title="Projects" />
               </NavItem>
               <NavItem className="port-navbar-item">
                 <BsNavLink href="/cv" title="Cv" />
