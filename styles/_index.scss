@@ -141,11 +141,11 @@
   }
 }
 
-// @media (max-width: 500px) {
-//   .hero-section {
-//     display: none;
-//   }
-// }
+@media (max-width: 500px) {
+  .hero-section {
+    display: none;
+  }
+}
 
 @media (max-width: 991px) {
   .hero-section {
