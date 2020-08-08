@@ -86,3 +86,55 @@ export const particlesOptionsProjects = {
     },
   },
 };
+
+export const particlesOptionsBlogs = {
+  particles: {
+    number: {
+      value: 250,
+      density: {
+        enable: false,
+      },
+    },
+    size: {
+      value: 3,
+      random: true,
+      anim: {
+        speed: 4,
+        size_min: 0.3,
+      },
+    },
+    line_linked: {
+      enable: false,
+    },
+    move: {
+      random: true,
+      speed: 1.5,
+      direction: "bottom",
+      out_mode: "out",
+    },
+  },
+  interactivity: {
+    events: {
+      onhover: {
+        enable: true,
+        mode: "bubble",
+      },
+      onclick: {
+        enable: true,
+        mode: "repulse",
+      },
+    },
+    modes: {
+      bubble: {
+        distance: 550,
+        duration: 5,
+        size: 0,
+        opacity: 1,
+      },
+      repulse: {
+        distance: 400,
+        duration: 4,
+      },
+    },
+  },
+};

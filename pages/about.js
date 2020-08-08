@@ -34,24 +34,26 @@ const About = () => {
               <p className={`subsubTitle ${createFadeInClass()}`}>
                 Feel free to read short description about me.
               </p>
-              <a
-                href="https://www.facebook.com/anuj.bansal.739"
-                target="_"
-                className="nounderline"
-              >
-                <i
-                  className={`ri-facebook-fill mr-2 clickable icons ${createFadeInClass()}`}
-                ></i>
-              </a>
-              <a
-                href="https://github.com/Cobraaz"
-                target="_"
-                className="nounderline"
-              >
-                <i
-                  className={`ri-github-fill clickable icons ${createFadeInClass()}`}
-                ></i>
-              </a>
+              <div className="mb-3">
+                <a
+                  href="https://www.facebook.com/anuj.bansal.739"
+                  target="_"
+                  className="nounderline"
+                >
+                  <i
+                    className={`ri-facebook-fill mr-2 clickable icons ${createFadeInClass()}`}
+                  ></i>
+                </a>
+                <a
+                  href="https://github.com/Cobraaz"
+                  target="_"
+                  className="nounderline"
+                >
+                  <i
+                    className={`ri-github-fill clickable icons ${createFadeInClass()}`}
+                  ></i>
+                </a>
+              </div>
             </div>
           </Col>
           <Col md="6">

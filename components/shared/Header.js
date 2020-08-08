@@ -65,6 +65,13 @@ const AdminMenu = () => {
         <DropdownItem>
           <BsNavLink
             className="port-dropdown-item"
+            href="/projects/new"
+            title="Create Project"
+          />
+        </DropdownItem>
+        <DropdownItem>
+          <BsNavLink
+            className="port-dropdown-item"
             href="/blogs/editor"
             title="Blog Editor"
           />
