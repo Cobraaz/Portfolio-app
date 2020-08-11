@@ -1,15 +1,15 @@
 import { useState } from "react";
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
 import { Row, Col, Button } from "reactstrap";
-import { useGetUser } from "@/actions/user";
+import { useGetUser } from "actions/user";
 import { useRouter } from "next/router";
-import ProjectApi from "@/lib/api/projects";
+import ProjectApi from "lib/api/projects";
 import Particles from "react-particles-js";
-import ProjectCard from "@/components/ProjectsCard";
+import ProjectCard from "components/ProjectsCard";
 import { particlesOptionsProjects } from "helpers";
 import { useDeleteProject } from "actions/projects";
-import { isAuthorized } from "@/utils/auth0";
+import { isAuthorized } from "utils/auth0";
 
 const Projects = ({ projects: initialProjects }) => {
   const router = useRouter();

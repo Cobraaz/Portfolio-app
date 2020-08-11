@@ -1,6 +1,6 @@
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import withAuth from "@/hoc/withAuth";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
+import withAuth from "hoc/withAuth";
 import { useRouter } from "next/router";
 import { useGetProject } from "actions/projects";
 import ProjectForm from "components/ProjectForm";

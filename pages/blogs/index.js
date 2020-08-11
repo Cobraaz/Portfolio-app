@@ -1,6 +1,6 @@
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import { useGetUser } from "@/actions/user";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
+import { useGetUser } from "actions/user";
 import Masthead from "components/shared/Masthead";
 import { Row, Col } from "reactstrap";
 

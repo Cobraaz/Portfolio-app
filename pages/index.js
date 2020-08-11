@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import BaseLayout from "@/components/layouts/BaseLayout";
+import BaseLayout from "components/layouts/BaseLayout";
 import { Container, Row, Col } from "reactstrap";
-import BasePage from "@/components/BasePage";
+import BasePage from "components/BasePage";
 import Typed from "react-typed";
-import { useGetUser } from "@/actions/user";
+import { useGetUser } from "actions/user";
 import Particles from "react-particles-js";
 import { ROLES, particlesOptionsIndex } from "helpers";
 

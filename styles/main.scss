@@ -2,12 +2,12 @@
 @import "./components/header";
 
 // Pages
-@import "./index";
-@import "./portfolios";
-@import "./blogs";
-@import "./about";
-@import "./portfolio-detail";
-@import "./projects";
+@import "./pages/about";
+@import "./pages/blogs";
+@import "./pages/index";
+@import "./pages/portfolio-detail";
+@import "./pages/portfolios";
+@import "./pages/projects";
 
 html,
 body {

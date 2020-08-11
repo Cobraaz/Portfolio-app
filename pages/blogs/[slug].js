@@ -1,7 +1,7 @@
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
 import { Row, Col } from "reactstrap";
-import { useGetUser } from "@/actions/user";
+import { useGetUser } from "actions/user";
 import { SlateView } from "slate-simple-editor";
 import Avatar from "components/shared/Avatar";
 

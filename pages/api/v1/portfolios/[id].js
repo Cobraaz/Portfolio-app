@@ -1,5 +1,5 @@
-import PortfolioApi from "@/lib/api/portfolios";
-import auth0 from "@/utils/auth0";
+import PortfolioApi from "lib/api/portfolios";
+import auth0 from "utils/auth0";
 
 export default async function handlePortfolio(req, res) {
   if (req.method === "GET") {

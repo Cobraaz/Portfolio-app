@@ -1,8 +1,8 @@
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import { useGetUser } from "@/actions/user";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
+import { useGetUser } from "actions/user";
 import { formatDate } from "helpers/functions";
-import PortfolioApi from "@/lib/api/portfolios";
+import PortfolioApi from "lib/api/portfolios";
 import { userRouter, useRouter } from "next/router";
 
 const Portfolio = ({ portfolio }) => {
