@@ -1,6 +1,6 @@
-import { useGetUser } from "@/actions/user";
-import Redirect from "@/components/shared/Redirect";
-import { isAuthorized } from "@/utils/auth0";
+import { useGetUser } from "actions/user";
+import Redirect from "components/shared/Redirect";
+import { isAuthorized } from "utils/auth0";
 
 const withAuth = (Component) => (role) => {
   return (props) => {

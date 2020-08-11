@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "slate-simple-editor/dist/index.css";
 import "react-slideshow-image/dist/styles.css";
 import "remixicon/fonts/remixicon.css";
-import "@/styles/main.scss";
+import "styles/main.scss";
 
 const App = ({ Component, pageProps }) => <Component {...pageProps} />;
 

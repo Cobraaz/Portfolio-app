@@ -1,6 +1,6 @@
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import { useGetUser } from "@/actions/user";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
+import { useGetUser } from "actions/user";
 import { Row, Col } from "reactstrap";
 
 const Cv = () => {

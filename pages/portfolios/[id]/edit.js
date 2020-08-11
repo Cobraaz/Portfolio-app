@@ -1,11 +1,11 @@
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import withAuth from "@/hoc/withAuth";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
+import withAuth from "hoc/withAuth";
 import { useRouter } from "next/router";
-import { useGetPortfolio } from "@/actions/portfolios";
-import PortfolioForm from "@/components/PortfolioForm";
+import { useGetPortfolio } from "actions/portfolios";
+import PortfolioForm from "components/Portfolio/PortfolioForm";
 import { Row, Col } from "reactstrap";
-import { useUpdatePortfolio } from "@/actions/portfolios";
+import { useUpdatePortfolio } from "actions/portfolios";
 import { toast } from "react-toastify";
 
 const PortfolioEdit = ({ user }) => {

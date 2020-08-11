@@ -1,5 +1,5 @@
 import ProjectApi from "lib/api/projects";
-import auth0 from "@/utils/auth0";
+import auth0 from "utils/auth0";
 
 export default async function handleProject(req, res) {
   if (req.method === "GET") {
