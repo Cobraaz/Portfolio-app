@@ -13,6 +13,7 @@ import { isAuthorized } from "utils/auth0";
 
 const Projects = ({ projects: initialProjects }) => {
   const router = useRouter();
+
   const [projects, setProjects] = useState(initialProjects);
   const [deleteProject, { data, error }] = useDeleteProject();
   const { data: dataU, loading: loadingU } = useGetUser();
