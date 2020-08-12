@@ -29,19 +29,12 @@ const Projects = ({ projects: initialProjects }) => {
   };
 
   return (
-    <BaseLayout
-      user={dataU}
-      loading={loadingU}
-      navClass="transparent"
-      className="projects-cover"
-    >
-      <Particles className="particles" params={particlesOptionsProjects} />
+    <BaseLayout user={dataU} loading={loadingU}>
       <BasePage
-        indexPage
-        title="Portfolio - Anuj Bansal"
+        title="Newest Portfolios - Anuj Bansal"
         className="projects-page"
       >
-        <h1 className="project-header-title">My Recent Works</h1>
+        <h1 className="project-header-title ">My Recents Works</h1>
         <Row className="mt-3 mb-5">
           {projects &&
             projects.map((project) => {
@@ -55,7 +48,11 @@ const Projects = ({ projects: initialProjects }) => {
                           target="_blank"
                           className="mr-2 btn btn-info"
                         >
-                          Repositery
+                          Repositery{" "}
+                          <i
+                            style={{ verticalAlign: "middle" }}
+                            className={`ri-git-repository-fill clickable icons `}
+                          ></i>
                         </a>
                       )}
 
@@ -65,7 +62,11 @@ const Projects = ({ projects: initialProjects }) => {
                           target="_blank"
                           className="mr-2 btn btn-success"
                         >
-                          Live
+                          Live{" "}
+                          <i
+                            style={{ verticalAlign: "middle" }}
+                            className={`ri-links-fill clickable icons `}
+                          ></i>
                         </a>
                       )}
                       {dataU && isAuthorized(dataU, "admin") && (
@@ -81,13 +82,17 @@ const Projects = ({ projects: initialProjects }) => {
                             className="mr-2"
                             color="warning"
                           >
-                            Edit
+                            <i
+                              className={`ri-edit-2-fill clickable icons `}
+                            ></i>
                           </Button>
                           <Button
                             onClick={(e) => _deleteProject(e, project._id)}
                             color="danger"
                           >
-                            Del
+                            <i
+                              className={`ri-delete-bin-2-fill clickable icons `}
+                            ></i>
                           </Button>
                         </>
                       )}
