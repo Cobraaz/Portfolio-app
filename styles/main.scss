@@ -55,4 +55,36 @@ body {
   }
 }
 
+.page-footer {
+  border-top: 0.1px solid;
+  border-color: #cccccc;
+  min-height: 10vh;
+  padding: 15px;
+  background-color: #ecedee;
+  font-size: 20px;
+  text-align: center;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99;
 
+  transition: 0.3s;
+
+  .icons {
+    @include animation-delay(4.5s);
+    font-size: 33px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+  }
+  .icons:hover {
+    background-color: #7510f7;
+    border-radius: 50%;
+    padding: 10px;
+    transform: translateY(-100px);
+    color: #ffff;
+  }
+
+  .nounderline {
+    text-decoration: none !important;
+  }
+}

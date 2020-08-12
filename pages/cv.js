@@ -17,7 +17,7 @@ const Cv = () => {
                 {width > 1500 ? (
                   <div style={{ paddingTop: "110px" }}>
                     <iframe
-                      style={{ width: "100%", height: "800px" }}
+                      style={{ width: "101%", height: "800px" }}
                       src="/AnujCv.pdf"
                     />
                   </div>
@@ -28,7 +28,7 @@ const Cv = () => {
                       style={{ width: "100%", height: "500px" }}
                     />
                     <a
-                      style={{ backgroundColor: "#4f90cd" }}
+                      style={{ backgroundColor: "#4f90cd", border: "#4f90cd" }}
                       href="/AnujCv.pdf"
                       className="mt-3 btn btn-success btn-sm"
                       download

@@ -28,6 +28,7 @@ const Index = () => {
       user={data}
       loading={loading}
       navClass="transparent"
+      footer
       className={`cover ${isFlipping ? "cover-orange" : "cover-blue"}`}
     >
       <Particles className="particles" params={particlesOptionsIndex} />
