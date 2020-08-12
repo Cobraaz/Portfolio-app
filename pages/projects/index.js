@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import ProjectApi from "lib/api/projects";
 import Particles from "react-particles-js";
 import ProjectCard from "components/ProjectsCard";
-import { particlesOptionsProjects } from "helpers";
 import { useDeleteProject } from "actions/projects";
 import { isAuthorized } from "utils/auth0";
 
@@ -30,18 +29,8 @@ const Projects = ({ projects: initialProjects }) => {
   };
 
   return (
-    <BaseLayout
-      user={dataU}
-      loading={loadingU}
-      navClass="transparent"
-      className="projects-cover"
-    >
-      <Particles className="particles" params={particlesOptionsProjects} />
-      <BasePage
-        indexPage
-        title="Portfolio - Anuj Bansal"
-        className="projects-page"
-      >
+    <BaseLayout user={dataU} loading={loadingU}>
+      <BasePage title="Newest Projects - Anuj Bansal" className="projects-page">
         <h1 className="project-header-title">My Recent Works</h1>
         <Row className="mt-3 mb-5">
           {projects &&
@@ -54,9 +43,13 @@ const Projects = ({ projects: initialProjects }) => {
                         <a
                           href={project.github}
                           target="_blank"
-                          className="mr-2 btn btn-info"
+                          className="mr-2 btn btn-info btn-sm"
                         >
-                          Repositery
+                          Repositery{" "}
+                          <i
+                            style={{ verticalAlign: "middle" }}
+                            className={`ri-git-repository-fill mr-2 clickable icons `}
+                          ></i>
                         </a>
                       )}
 
@@ -64,14 +57,19 @@ const Projects = ({ projects: initialProjects }) => {
                         <a
                           href={project.link}
                           target="_blank"
-                          className="mr-2 btn btn-success"
+                          className="mr-2 btn btn-success btn-sm"
                         >
-                          Live
+                          Live{" "}
+                          <i
+                            style={{ verticalAlign: "middle" }}
+                            className={`ri-links-fill mr-2 clickable icons `}
+                          ></i>
                         </a>
                       )}
                       {dataU && isAuthorized(dataU, "admin") && (
                         <>
                           <Button
+                            size="sm"
                             onClick={(e) => {
                               e.stopPropagation();
                               router.push(
@@ -82,13 +80,18 @@ const Projects = ({ projects: initialProjects }) => {
                             className="mr-2"
                             color="warning"
                           >
-                            Edit
+                            <i
+                              className={`ri-edit-2-fill mr-2 clickable icons `}
+                            ></i>
                           </Button>
                           <Button
+                            size="sm"
                             onClick={(e) => _deleteProject(e, project._id)}
                             color="danger"
                           >
-                            Del
+                            <i
+                              className={`ri-delete-bin-2-fill mr-2 clickable icons `}
+                            ></i>
                           </Button>
                         </>
                       )}
