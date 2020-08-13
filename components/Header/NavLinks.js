@@ -46,6 +46,9 @@ export const NavLinks = ({ user, loading }) => {
                 <LoginLink />
               </NavItem>
             )}
+            <NavItem className="port-navbar-item">
+              <BsNavLink href="/contact" title="Contact" />
+            </NavItem>
           </>
         )}
       </Nav>
