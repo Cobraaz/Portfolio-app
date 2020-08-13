@@ -3,7 +3,7 @@ import BasePage from "components/BasePage";
 import withAuth from "hoc/withAuth";
 import { useRouter } from "next/router";
 import { useGetProject } from "actions/projects";
-import ProjectForm from "components/ProjectForm";
+import ProjectForm from "components/project/ProjectForm";
 import { Row, Col } from "reactstrap";
 import { useUpdateProject } from "actions/projects";
 import { toast } from "react-toastify";

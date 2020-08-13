@@ -2,7 +2,7 @@ import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/BasePage";
 import withAuth from "hoc/withAuth";
 import { Row, Col } from "reactstrap";
-import ProjectForm from "components/ProjectForm";
+import ProjectForm from "components/project/ProjectForm";
 import { useCreateProject } from "actions/projects";
 import Redirect from "components/shared/Redirect";
 

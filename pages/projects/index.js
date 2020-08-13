@@ -6,7 +6,7 @@ import { useGetUser } from "actions/user";
 import { useRouter } from "next/router";
 import ProjectApi from "lib/api/projects";
 import Particles from "react-particles-js";
-import ProjectCard from "components/ProjectsCard";
+import ProjectCard from "components/project/ProjectsCard";
 import { useDeleteProject } from "actions/projects";
 import { isAuthorized } from "utils/auth0";
 
