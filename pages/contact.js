@@ -28,10 +28,8 @@ const Contact = () => {
           >
             <div className="form-wrapper">
               <h1>Drop a Line</h1>
-              {/* <h3>
-                    Get <b>In Touch</b>
-                  </h3> */}
-              <h5 style={{ color: "red" }}>This is in development mode</h5>
+
+              {/* <h5 style={{ color: "red" }}>This is in development mode</h5> */}
               <ContactForm onSubmit={contactMe} />
               {error &&
                 error.errors.map((err) => (

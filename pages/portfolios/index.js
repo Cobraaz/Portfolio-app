@@ -56,13 +56,15 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
                       className="mr-2"
                       color="warning"
                     >
-                      Edit
+                      <i className={`ri-edit-2-fill clickable icons `}></i>
                     </Button>
                     <Button
                       onClick={(e) => _deletePortfolio(e, portfolio._id)}
                       color="danger"
                     >
-                      Delete
+                      <i
+                        className={`ri-delete-bin-2-fill clickable icons `}
+                      ></i>
                     </Button>
                   </>
                 )}

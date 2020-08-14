@@ -2,7 +2,7 @@ import ReactResizeDetector from "react-resize-detector";
 import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/BasePage";
 import { useGetUser } from "actions/user";
-import { Row, Col, Button } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 const Cv = () => {
   const { data, loading } = useGetUser();
@@ -15,14 +15,14 @@ const Cv = () => {
             <Row>
               <Col md={{ size: 8, offset: 2 }}>
                 {width > 1500 ? (
-                  <div style={{ paddingTop: "110px" }}>
+                  <div>
                     <iframe
                       style={{ width: "101%", height: "800px" }}
                       src="/AnujCv.pdf"
                     />
                   </div>
                 ) : (
-                  <div style={{ paddingTop: "110px" }}>
+                  <div>
                     <img
                       src="/images/AnujCvImg.jpg"
                       style={{ width: "100%", height: "500px" }}

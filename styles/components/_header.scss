@@ -2,29 +2,30 @@
 .port-navbar.port-default {
   width: 100%;
   z-index: 15;
-  padding: 30px;
+  padding: 10px 30px;
 
   &.with-bg {
     background-color: #2c3e50;
-    padding: 20px;
+    padding: 1px 30px;
   }
 
   &.with-bg-about {
     background-color: #7510f7;
-    padding: 20px;
+    padding: 1px 30px;
   }
 
   &.with-bg-cv {
     background-color: #4f90cd;
-    padding: 20px;
+    padding: 1px 30px;
   }
 
   .port-navbar {
     &-brand {
       color: white;
-      font-size: 24px;
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      // padding-bottom: 70px;
       font-weight: 900;
     }
 
@@ -39,6 +40,7 @@
       letter-spacing: 0.8px;
       font-size: 18px;
       text-transform: uppercase;
+      // padding-bottom: 70px;
 
       &.active {
         color: #61dafb;
@@ -68,6 +70,66 @@
       color: white;
       margin-left: 10px;
       margin-right: 10px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .port-navbar.port-default {
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &.with-bg {
+      background-color: #2c3e50;
+      padding: 10px 10px 5px 5px;
+    }
+
+    &.with-bg-about {
+      background-color: #7510f7;
+      padding: 10px 10px 5px 5px;
+    }
+
+    &.with-bg-cv {
+      background-color: #4f90cd;
+      padding: 10px 10px 5px 5px;
+    }
+    .port-navbar {
+      &-brand {
+        font-size: 10px;
+      }
+
+      &-link {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .port-navbar.port-default {
+    padding-top: 10px;
+    // padding-left: 5px;
+    // padding-right: 10px;
+
+    &.with-bg {
+      background-color: #2c3e50;
+      padding: 10px 10px 5px 5px;
+    }
+
+    &.with-bg-about {
+      background-color: #7510f7;
+      padding: 10px 10px 5px 5px;
+    }
+
+    &.with-bg-cv {
+      background-color: #4f90cd;
+      padding: 10px 10px 5px 5px;
+    }
+    .port-navbar {
+      &-brand {
+        font-size: 10px;
+      }
     }
   }
 }

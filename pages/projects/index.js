@@ -5,7 +5,6 @@ import { Row, Col, Button } from "reactstrap";
 import { useGetUser } from "actions/user";
 import { useRouter } from "next/router";
 import ProjectApi from "lib/api/projects";
-import Particles from "react-particles-js";
 import ProjectCard from "components/project/ProjectsCard";
 import { useDeleteProject } from "actions/projects";
 import { isAuthorized } from "utils/auth0";
@@ -81,7 +80,7 @@ const Projects = ({ projects: initialProjects }) => {
                             color="warning"
                           >
                             <i
-                              className={`ri-edit-2-fill mr-2 clickable icons `}
+                              className={`ri-edit-2-fill clickable icons `}
                             ></i>
                           </Button>
                           <Button
@@ -90,7 +89,7 @@ const Projects = ({ projects: initialProjects }) => {
                             color="danger"
                           >
                             <i
-                              className={`ri-delete-bin-2-fill mr-2 clickable icons `}
+                              className={`ri-delete-bin-2-fill clickable icons `}
                             ></i>
                           </Button>
                         </>
