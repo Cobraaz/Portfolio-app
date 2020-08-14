@@ -20,7 +20,7 @@ const ContactForm = ({ onSubmit }) => {
         </InputGroupAddon>
         <input
           className="form-control"
-          name="fullname"
+          name="fullName"
           placeholder="FullName"
           required
           ref={register}
