@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import ReactResizeDetector from "react-resize-detector";
 
 import { Collapse, Navbar, NavbarToggler } from "reactstrap";
@@ -6,10 +5,7 @@ import { Collapse, Navbar, NavbarToggler } from "reactstrap";
 import { BsNavBrand } from "components/Header/Header.helpers";
 import { NavLinks } from "components/Header/NavLinks";
 
-const Header = ({ user, loading, className }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-
+const Header = ({ user, loading, className, isOpen, toggle }) => {
   return (
     <ReactResizeDetector handleWidth>
       {({ width }) => (

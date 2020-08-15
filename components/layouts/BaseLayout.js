@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "components/Header";
 import { ToastContainer } from "react-toastify";
 
@@ -10,17 +11,26 @@ const BaseLayout = (props) => {
     children,
     footer,
   } = props;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
   return (
     <div className="layout-container">
-      <Header className={navClass} user={user} loading={loading} />
+      <Header
+        className={navClass}
+        user={user}
+        loading={loading}
+        isOpen={isOpen}
+        toggle={toggle}
+      />
 
-      <main className={`cover ${className}`}>
+      <main className={`cover ${className}`} onClick={() => isOpen && toggle()}>
         <div className="wrapper">{children}</div>
       </main>
       <ToastContainer />
 
       {!footer && (
-        <footer className="page-footer">
+        <footer className="page-footer" onClick={() => isOpen && toggle()}>
           <div>
             <a
               href="https://www.facebook.com/anuj.bansal.739"

@@ -45,7 +45,7 @@ const Portfolio = ({ portfolio }) => {
                     <a
                       href={portfolio.companyWebsite}
                       target="_"
-                      class="btn btn-lg btn-secondary"
+                      className="btn btn-lg btn-secondary"
                     >
                       Visit Company
                     </a>
