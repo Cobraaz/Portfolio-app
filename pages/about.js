@@ -34,30 +34,10 @@ const About = () => {
               <p className={`subsubTitle ${createFadeInClass()}`}>
                 Feel free to read short description about me.
               </p>
-              <div className="mb-3">
-                <a
-                  href="https://www.facebook.com/anuj.bansal.739"
-                  target="_"
-                  className="nounderline"
-                >
-                  <i
-                    className={`ri-facebook-fill mr-2 clickable icons ${createFadeInClass()}`}
-                  ></i>
-                </a>
-                <a
-                  href="https://github.com/Cobraaz"
-                  target="_"
-                  className="nounderline"
-                >
-                  <i
-                    className={`ri-github-fill clickable icons ${createFadeInClass()}`}
-                  ></i>
-                </a>
-              </div>
             </div>
           </Col>
           <Col md="6">
-            <div className={`subsubTitle ${createFadeInClass()}`}>
+            <div className={`subsubTitle ${createFadeInClass()} mt-3`}>
               <h5 style={{ fontWeight: "bolder" }}>
                 Hi, I’m Anuj Bansal. I'm a multi-talented human with over 6+
                 months of experiences in Reactjs and Node.js.
