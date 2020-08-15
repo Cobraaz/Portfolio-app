@@ -8,6 +8,10 @@ import ProjectApi from "lib/api/projects";
 import ProjectCard from "components/project/ProjectsCard";
 import { useDeleteProject } from "actions/projects";
 import { isAuthorized } from "utils/auth0";
+import {
+  CardDeleteButton,
+  CardEditButton,
+} from "components/shared/CardButtons";
 
 const Projects = ({ projects: initialProjects }) => {
   const router = useRouter();
@@ -67,31 +71,11 @@ const Projects = ({ projects: initialProjects }) => {
                       )}
                       {dataU && isAuthorized(dataU, "admin") && (
                         <>
-                          <Button
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              router.push(
-                                "/projects/[id]/edit",
-                                `/projects/${project._id}/edit`
-                              );
-                            }}
-                            className="mr-2"
-                            color="warning"
-                          >
-                            <i
-                              className={`ri-edit-2-fill clickable icons `}
-                            ></i>
-                          </Button>
-                          <Button
-                            size="sm"
-                            onClick={(e) => _deleteProject(e, project._id)}
-                            color="danger"
-                          >
-                            <i
-                              className={`ri-delete-bin-2-fill clickable icons `}
-                            ></i>
-                          </Button>
+                          <CardEditButton to={"projects"} data={project} />
+                          <CardDeleteButton
+                            data={project}
+                            deleteCard={_deleteProject}
+                          />
                         </>
                       )}
                     </>

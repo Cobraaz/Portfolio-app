@@ -27,6 +27,14 @@
       letter-spacing: 1px;
       // padding-bottom: 70px;
       font-weight: 900;
+      &.active {
+        color: #61dafb;
+      }
+
+      &:hover,
+      &:focus {
+        color: #61dafb;
+      }
     }
 
     &-item {

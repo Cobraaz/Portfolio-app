@@ -8,7 +8,10 @@ import PortfolioApi from "lib/api/portfolios";
 import PortfolioCard from "components/Portfolio/PortfolioCard";
 import { isAuthorized } from "utils/auth0";
 import { useDeletePortfolio } from "actions/portfolios";
-
+import {
+  CardDeleteButton,
+  CardEditButton,
+} from "components/shared/CardButtons";
 const Portfolios = ({ portfolios: initialPortfolios }) => {
   const router = useRouter();
   const [portfolios, setPortfolios] = useState(initialPortfolios);
@@ -45,27 +48,11 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
               <PortfolioCard portfolio={portfolio}>
                 {dataU && isAuthorized(dataU, "admin") && (
                   <>
-                    <Button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        router.push(
-                          "/portfolios/[id]/edit",
-                          `/portfolios/${portfolio._id}/edit`
-                        );
-                      }}
-                      className="mr-2"
-                      color="warning"
-                    >
-                      <i className={`ri-edit-2-fill clickable icons `}></i>
-                    </Button>
-                    <Button
-                      onClick={(e) => _deletePortfolio(e, portfolio._id)}
-                      color="danger"
-                    >
-                      <i
-                        className={`ri-delete-bin-2-fill clickable icons `}
-                      ></i>
-                    </Button>
+                    <CardEditButton to={"portfolios"} data={portfolio} />
+                    <CardDeleteButton
+                      data={portfolio}
+                      deleteCard={_deletePortfolio}
+                    />
                   </>
                 )}
               </PortfolioCard>
