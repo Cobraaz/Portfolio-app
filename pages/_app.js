@@ -1,3 +1,4 @@
+import ThemeProvider from "providers/ThemeProvider";
 import { library, config } from "@fortawesome/fontawesome-svg-core";
 import {
   faSun,
@@ -21,13 +22,17 @@ library.add(
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "highlight.js/styles/darcula.css";
+import "react-toggle/style.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-toastify/dist/ReactToastify.css";
-import "slate-simple-editor/dist/index.css";
 import "react-slideshow-image/dist/styles.css";
 import "remixicon/fonts/remixicon.css";
 import "styles/main.scss";
 
-const App = ({ Component, pageProps }) => <Component {...pageProps} />;
+const App = ({ Component, pageProps }) => (
+  <ThemeProvider>
+    <Component {...pageProps} />
+  </ThemeProvider>
+);
 
 export default App;

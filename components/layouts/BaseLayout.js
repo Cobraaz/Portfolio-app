@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "components/Header";
 import { ToastContainer } from "react-toastify";
+import { useTheme } from "providers/ThemeProvider";
 
 const BaseLayout = (props) => {
   const {
@@ -12,16 +13,19 @@ const BaseLayout = (props) => {
     footer,
   } = props;
 
+  const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   return (
-    <div className="layout-container">
+    <div className={`layout-container ${theme.type}`}>
       <Header
         className={navClass}
         user={user}
         loading={loading}
         isOpen={isOpen}
         toggle={toggle}
+        theme={theme}
+        toggleTheme={toggleTheme}
       />
 
       <main className={`cover ${className}`} onClick={() => isOpen && toggle()}>
@@ -49,6 +53,17 @@ const BaseLayout = (props) => {
           </div>
         </footer>
       )}
+      <style jsx global>
+        {`
+          html,
+          body,
+          .base-page {
+            background: ${theme.background};
+            color: ${theme.fontColor};
+            transition: color 0.2s ease-out 0s, background 0.2s ease-out 0s;
+          }
+        `}
+      </style>
     </div>
   );
 };

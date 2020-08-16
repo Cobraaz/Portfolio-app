@@ -90,3 +90,14 @@ body {
     text-decoration: none !important;
   }
 }
+
+.dark {
+  .page-footer {
+    background: #2b2c38;
+    transition: color 0s ease-out 0s, background 0.2s ease-out 0s;
+
+    a {
+      color: #e4e6eb;
+    }
+  }
+}

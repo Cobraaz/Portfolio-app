@@ -1,13 +1,16 @@
 import { Nav, NavItem } from "reactstrap";
 import { AdminMenu } from "./AdminMenu";
 import { isAuthorized } from "utils/auth0";
+import ThemeToggle from "components/shared/ThemeToggle";
+// import { useTheme } from "providers/ThemeProvider";
 import {
   BsNavLink,
   LoginLink,
   LogoutLink,
 } from "components/Header/Header.helpers";
 
-export const NavLinks = ({ user, loading }) => {
+export const NavLinks = ({ user, loading, theme, toggleTheme }) => {
+  // const { theme, toggleTheme } = useTheme();
   return (
     <>
       <Nav className="mr-auto ml-auto" navbar>
@@ -51,6 +54,7 @@ export const NavLinks = ({ user, loading }) => {
             </NavItem>
           </>
         )}
+        <ThemeToggle onChange={toggleTheme} />
       </Nav>
     </>
   );

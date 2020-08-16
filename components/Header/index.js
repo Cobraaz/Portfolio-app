@@ -5,7 +5,15 @@ import { Collapse, Navbar, NavbarToggler } from "reactstrap";
 import { BsNavBrand } from "components/Header/Header.helpers";
 import { NavLinks } from "components/Header/NavLinks";
 
-const Header = ({ user, loading, className, isOpen, toggle }) => {
+const Header = ({
+  user,
+  loading,
+  className,
+  isOpen,
+  toggle,
+  theme,
+  toggleTheme,
+}) => {
   return (
     <ReactResizeDetector handleWidth>
       {({ width }) => (
@@ -19,7 +27,12 @@ const Header = ({ user, loading, className, isOpen, toggle }) => {
           <BsNavBrand />
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <NavLinks user={user} loading={loading} />
+            <NavLinks
+              user={user}
+              loading={loading}
+              theme={theme}
+              toggleTheme={toggleTheme}
+            />
           </Collapse>
         </Navbar>
       )}

@@ -48,3 +48,10 @@
     margin-bottom: 20px;
   }
 }
+
+.dark {
+  .portfolio-card {
+    background: rgba(255, 255, 255, 0.1);
+    transition: color 0s ease-out 0s, background 0.2s ease-out 0s;
+  }
+}

@@ -108,3 +108,37 @@
     padding-top: 40px !important;
   }
 }
+
+.dark {
+  .about-page {
+    padding-top: 130px;
+    padding-bottom: 20px !important;
+
+    .subsubTitle {
+      color: #e4e6eb;
+      @include animation-delay(3.6s);
+      font-size: 18px;
+    }
+
+    .code-icons {
+      @include animation-delay(4.5s);
+      font-size: 50px;
+      color: #7510f7;
+    }
+    .code-title {
+      @include animation-delay(4.5s);
+      font-size: 25px;
+      font-weight: bold;
+      color: #e4e6eb;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .about-page {
+      padding-top: 40px !important;
+      
+    }
+  }
+}
+
+// #E4E6EB
