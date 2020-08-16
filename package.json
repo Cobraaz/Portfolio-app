@@ -3,16 +3,23 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
     "start-dev": "NODE_ENV=production node server.js",
     "start": "next start"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^0.11.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/client": "^1.149.18",
+    "@sanity/image-url": "^0.140.19",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "express": "^4.17.1",
+    "highlight.js": "^10.1.2",
     "moment": "^2.27.0",
     "next": "9.5.0",
     "next-routes": "^1.4.2",
@@ -29,6 +36,6 @@
     "remixicon": "^2.5.0",
     "sass": "^1.26.10",
     "slate-simple-editor": "git+https://github.com/Jerga99/slate-simple-editor.git",
-    "swr": "^0.3.0"
+    "swr": "^0.2.2"
   }
 }

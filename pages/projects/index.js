@@ -1,9 +1,8 @@
 import { useState } from "react";
 import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/BasePage";
-import { Row, Col, Button } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import { useGetUser } from "actions/user";
-import { useRouter } from "next/router";
 import ProjectApi from "lib/api/projects";
 import ProjectCard from "components/project/ProjectsCard";
 import { useDeleteProject } from "actions/projects";
@@ -14,8 +13,6 @@ import {
 } from "components/shared/CardButtons";
 
 const Projects = ({ projects: initialProjects }) => {
-  const router = useRouter();
-
   const [projects, setProjects] = useState(initialProjects);
   const [deleteProject, { data, error }] = useDeleteProject();
   const { data: dataU, loading: loadingU } = useGetUser();

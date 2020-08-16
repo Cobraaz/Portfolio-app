@@ -1,11 +1,11 @@
 .projects-page {
   min-height: 100vh;
   padding-top: 130px;
+  padding-bottom: 5px !important;
   // background-color: white;
 
   .project-card {
-    background: linear-gradient(89deg, #4f90cd 0%, #1d4d6e 100%); /* w3c */
-
+    background: linear-gradient(89deg, #4f90cd 0%, #1d4d6e 100%);
     border: none;
     color: #ecedee;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s;

@@ -1,22 +1,12 @@
-import axios from "axios";
-import { useApiHandler, fetcher } from "actions";
 import useSWR from "swr";
 
-const createBlog = (data) => axios.post("/api/v1/blogs", data);
-const updateBlog = (id, data) => axios.patch(`/api/v1/blogs/${id}`, data);
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export const useCreateBlog = () => useApiHandler(createBlog);
-export const useUpdateBlog = () => useApiHandler(updateBlog);
-
-export const useGetBlog = (id) => {
-  const { data, error, ...rest } = useSWR(
-    id ? `/api/v1/blogs/${id}` : null,
-    fetcher
+export const useGetBlogs = ({ offset, filter }, initialData) => {
+  return useSWR(
+    `
+    /api/blogs?offset=${offset || 0}&date=${filter.date.asc ? "asc" : "desc"}`,
+    fetcher,
+    { initialData }
   );
-  return { data, error, loading: !data && !error, ...rest };
-};
-
-export const useGetUserBlogs = () => {
-  const { data, error, ...rest } = useSWR(`/api/v1/blogs/me`, fetcher);
-  return { data, error, loading: !data && !error, ...rest };
 };

@@ -1,30 +1,49 @@
 import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/BasePage";
+import BlogHeader from "components/Blogs/BlogHeader";
 import { Row, Col } from "reactstrap";
 import { useGetUser } from "actions/user";
-import { SlateView } from "slate-simple-editor";
-import Avatar from "components/shared/Avatar";
+import { getBlogBySlug, getAllBlogs } from "lib/api/blogs";
+import PreviewAlert from "components/Blogs/PreviewAlert";
+import BlogContent from "components/Blogs/BlogContent";
+import { formatDate } from "helpers/functions";
+import { urlFor } from "lib/api/blogs";
+import ErrorPage from "next/error";
+import { useRouter } from "next/router";
+import Fallback from "components/Blogs/Fallback";
 
-import BlogApi from "lib/api/blogs";
+const BlogDetail = ({ blog, preview }) => {
+  const router = useRouter();
 
-const BlogDetail = ({ blog, author }) => {
+  if (!router.isFallback && !blog?.slug) {
+    return <ErrorPage statusCode="404" />;
+  }
+
+  if (router.isFallback) {
+    console.log("Loading fallback page");
+    return <Fallback />;
+  }
+
   const { data, loading } = useGetUser();
   return (
     <BaseLayout user={data} loading={loading}>
       <BasePage
-        title={`${blog.title} - Anuj Bansal`}
-        metaDescription={blog.subTitle}
-        className="slate-container"
+        title={`Blogs - Anuj Bansal`}
+        className="page-wrapper blog-detail-page"
+        linkFont
       >
         <Row>
-          <Col md={{ size: 8, offset: 2 }}>
-            <Avatar
-              title={author.name}
-              image={author.picture}
-              date={blog.createdAt}
+          <Col md={{ span: 10, offset: 1 }}>
+            {preview && <PreviewAlert />}
+            <BlogHeader
+              title={blog.title}
+              subtitle={blog.subtitle}
+              coverImage={urlFor(blog.coverImage).height(600).url()}
+              author={blog.author}
+              date={formatDate(blog.date, "LL")}
             />
             <hr />
-            <SlateView initialContent={blog.content} />
+            {blog.content && <BlogContent content={blog.content} />}
           </Col>
         </Row>
       </BasePage>
@@ -32,17 +51,22 @@ const BlogDetail = ({ blog, author }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const { data } = await new BlogApi().getAll();
-  const paths = data.map(({ blog }) => ({ params: { slug: blog.slug } }));
-  return { paths, fallback: false };
+export async function getStaticProps({ params, preview = false, previewData }) {
+  // Todo: pass preview to getBlogBySlug and fetch draft blog
+  const blog = await getBlogBySlug(params.slug, preview);
+  return {
+    props: { blog, preview },
+    revalidate: 1,
+  };
 }
 
-export async function getStaticProps({ params }) {
-  const {
-    data: { blog, author },
-  } = await new BlogApi().getBySlug(params.slug);
-  return { props: { blog, author }, revalidate: 1 };
+export async function getStaticPaths() {
+  const blogs = await getAllBlogs();
+  const paths = blogs?.map((b) => ({ params: { slug: b.slug } }));
+  return {
+    paths,
+    fallback: true,
+  };
 }
 
 export default BlogDetail;

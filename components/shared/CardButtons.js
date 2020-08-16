@@ -11,6 +11,7 @@ export const CardEditButton = ({ to, data }) => {
       }}
       className="mr-2"
       color="warning"
+      size="sm"
     >
       <i className={`ri-edit-2-fill clickable icons `}></i>
     </Button>
@@ -18,7 +19,7 @@ export const CardEditButton = ({ to, data }) => {
 };
 
 export const CardDeleteButton = ({ data, deleteCard }) => (
-  <Button onClick={(e) => deleteCard(e, data._id)} color="danger">
+  <Button onClick={(e) => deleteCard(e, data._id)} color="danger" size="sm">
     <i className={`ri-delete-bin-2-fill clickable icons `}></i>
   </Button>
 );
