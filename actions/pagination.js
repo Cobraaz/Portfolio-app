@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { useSWRPages } from "swr";
 import { useGetBlogs } from "actions/blogs";
 import { Col } from "reactstrap";

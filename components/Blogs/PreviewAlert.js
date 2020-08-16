@@ -5,7 +5,7 @@ export default function PreviewAlert() {
     <Alert color="secondary">
       This is the preview mode!{" "}
       {/* TODO: This will lead me to API route that will remove preview cookies */}
-      <a href="/api/exit-preview">Leave preview mode</a>
+      <a href="/api/v1/blogs/exit-preview">Leave preview mode</a>
     </Alert>
   );
 }
