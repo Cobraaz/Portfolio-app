@@ -60,7 +60,7 @@ const BaseLayout = (props) => {
           .base-page {
             background: ${theme.background};
             color: ${theme.fontColor};
-            transition: color 0.2s ease-out 0s, background 0.2s ease-out 0s;
+            transition: color 0.5s ease-out 0s, background 0.5s ease-out 0s;
           }
         `}
       </style>

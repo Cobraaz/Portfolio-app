@@ -72,7 +72,7 @@ const ContactForm = ({ onSubmit }) => {
         />
       </InputGroup>
       <InputGroup>
-        <Button type="submit" color="primary" block>
+        <Button type="submit" className="btn-info" block>
           <i className="ri-save-2-line" style={{ float: "left" }}></i> Submit
         </Button>
       </InputGroup>

@@ -58,3 +58,35 @@
     }
   }
 }
+
+.dark {
+  .contact-page {
+    .form-wrapper {
+      background-color: rgba(228, 230, 225, 0.5);
+    }
+
+    h1 {
+      color: #e4e6eb;
+    }
+
+    .input-group {
+      margin: 15px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .contact-page {
+      .form-wrapper {
+        background-color: #2b2c38;
+      }
+    }
+  }
+
+  @media (max-width: 300px) {
+    .contact-page {
+      .form-wrapper {
+        background-color: #2b2c38;
+      }
+    }
+  }
+}

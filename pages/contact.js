@@ -15,7 +15,7 @@ const Contact = () => {
   }
 
   return (
-    <BaseLayout user={dataU} loading={loadingU} navClass="with-bg-cv">
+    <BaseLayout user={dataU} loading={loadingU} navClass="with-bg-contact">
       <BasePage
         title="My Experiences - Anuj Bansal"
         className="contact-page wrapper"
