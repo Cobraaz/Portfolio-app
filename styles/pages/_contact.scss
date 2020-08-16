@@ -27,6 +27,10 @@
   .input-group {
     margin: 15px;
   }
+
+  .btn-contact {
+    background-color: #17a2b8;
+  }
 }
 
 @media (max-width: 900px) {
@@ -69,8 +73,8 @@
       color: #e4e6eb;
     }
 
-    .input-group {
-      margin: 15px;
+    .btn-contact {
+      background-color: #6c757d;
     }
   }
 

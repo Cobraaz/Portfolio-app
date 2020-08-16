@@ -1,7 +1,7 @@
 import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/BasePage";
 import BlogHeader from "components/Blogs/BlogHeader";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
 import { useGetUser } from "actions/user";
 import { getBlogBySlug, getAllBlogs } from "lib/api/blogs";
 import PreviewAlert from "components/Blogs/PreviewAlert";
@@ -28,12 +28,11 @@ const BlogDetail = ({ blog, preview }) => {
   return (
     <BaseLayout user={data} loading={loading}>
       <BasePage
-        title={`Blogs - Anuj Bansal`}
-        className="page-wrapper blog-detail-page"
-        linkFont
+        title="Newest BLogs - Anuj Bansal"
+        className="blog-detail-page"
       >
         <Row>
-          <Col md={{ span: 10, offset: 1 }}>
+          <Col md={{ size: 8, offset: 2 }}>
             {preview && <PreviewAlert />}
             <BlogHeader
               title={blog.title}

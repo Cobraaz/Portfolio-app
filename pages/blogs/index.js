@@ -27,11 +27,7 @@ function Blogs({ blogs, preview }) {
 
   return (
     <BaseLayout user={dataU} loading={loadingU}>
-      <BasePage
-        title="Newest Blogs - Anuj Bansal"
-        className="page-wrapper"
-        linkFont
-      >
+      <BasePage title="Newest Blogs - Anuj Bansal" className="" linkFont>
         {preview && <PreviewAlert />}
         <FilteringMenu
           filter={filter}

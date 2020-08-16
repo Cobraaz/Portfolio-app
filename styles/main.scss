@@ -1,5 +1,7 @@
 // Components
 @import "./components/header";
+// @import "./components/footer";
+// @import "./components/card";
 
 // Pages
 @import "./pages/about";
@@ -9,6 +11,7 @@
 @import "./pages/portfolios";
 @import "./pages/projects";
 @import "./pages/contact.scss";
+@import "./pages/blog-detail";
 
 html,
 body {
@@ -100,4 +103,20 @@ body {
       color: #e4e6eb;
     }
   }
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.hoverable:hover {
+  opacity: 0.7;
+}
+
+.red-text {
+  color: #f44336 !important;
+}
+
+.page-wrapper {
+  padding-top: 20px;
 }
