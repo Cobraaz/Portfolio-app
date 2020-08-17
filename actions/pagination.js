@@ -6,11 +6,19 @@ import CardItemBlank from "components/Blogs/Card/CardItemBlank";
 import CardListItem from "components/Blogs/Card/CardListItem";
 import CardListItemBlank from "components/Blogs/Card/CardListItemBlank";
 import moment from "moment";
+import { useRouter } from "next/router";
 
 export const BlogList = ({ blogs, filter }) => {
+  const router = useRouter();
   return blogs.map((blog) =>
     filter.view.list ? (
-      <Col key={`${blog.slug}-list`} md="9">
+      <Col
+        key={`${blog.slug}-list`}
+        md="9"
+        onClick={() => {
+          router.push("/blogs/[slug]", `/blogs/${blog.slug}`);
+        }}
+      >
         <CardListItem
           author={blog.author}
           title={blog.title}
@@ -23,7 +31,14 @@ export const BlogList = ({ blogs, filter }) => {
         />
       </Col>
     ) : (
-      <Col key={blog.slug} lg="4" md="6">
+      <Col
+        key={blog.slug}
+        lg="4"
+        md="6"
+        onClick={() => {
+          router.push("/blogs/[slug]", `/blogs/${blog.slug}`);
+        }}
+      >
         <CardItem
           author={blog.author}
           title={blog.title}

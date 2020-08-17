@@ -39,6 +39,9 @@ body {
     &.no-image {
       min-height: auto;
     }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .card-body {
