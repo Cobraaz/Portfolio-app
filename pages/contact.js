@@ -5,12 +5,16 @@ import ContactForm from "components/contact/ContactForm";
 import { useContactMe } from "actions/contact";
 import Redirect from "components/shared/Redirect";
 import { Row, Col, UncontrolledAlert, Spinner } from "reactstrap";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const { dataU, loadingU } = useGetUser();
   const [contactMe, { data, loading, error }] = useContactMe();
 
   if (data) {
+    setTimeout(() => {
+      toast.success("Thank You for sending me Feedback", { autoClose: 5000 });
+    }, 0);
     return <Redirect to="/" />;
   }
 
