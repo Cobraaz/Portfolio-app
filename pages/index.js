@@ -27,6 +27,7 @@ const Index = () => {
     <BaseLayout
       user={data}
       loading={loading}
+      indexPage
       navClass="transparent"
       footer
       className={`cover ${isFlipping ? "cover-orange" : "cover-blue"}`}

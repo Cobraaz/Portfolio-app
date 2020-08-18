@@ -9,8 +9,9 @@ import {
   LogoutLink,
 } from "components/Header/Header.helpers";
 
-export const NavLinks = ({ user, loading, theme, toggleTheme }) => {
+export const NavLinks = ({ user, loading, theme, toggleTheme, indexPage }) => {
   // const { theme, toggleTheme } = useTheme();
+
   return (
     <>
       <Nav className="mr-auto ml-auto" navbar>
@@ -54,7 +55,7 @@ export const NavLinks = ({ user, loading, theme, toggleTheme }) => {
             </NavItem>
           </>
         )}
-        <ThemeToggle onChange={toggleTheme} />
+        {!indexPage && <ThemeToggle onChange={toggleTheme} />}
       </Nav>
     </>
   );

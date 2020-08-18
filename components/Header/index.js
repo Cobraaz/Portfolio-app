@@ -13,6 +13,7 @@ const Header = ({
   toggle,
   theme,
   toggleTheme,
+  indexPage,
 }) => {
   return (
     <ReactResizeDetector handleWidth>
@@ -32,6 +33,7 @@ const Header = ({
               loading={loading}
               theme={theme}
               toggleTheme={toggleTheme}
+              indexPage={indexPage}
             />
           </Collapse>
         </Navbar>

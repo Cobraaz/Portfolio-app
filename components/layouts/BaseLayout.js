@@ -11,6 +11,7 @@ const BaseLayout = (props) => {
     loading,
     children,
     footer,
+    indexPage,
   } = props;
 
   const { theme, toggleTheme } = useTheme();
@@ -26,6 +27,7 @@ const BaseLayout = (props) => {
         toggle={toggle}
         theme={theme}
         toggleTheme={toggleTheme}
+        indexPage={indexPage}
       />
 
       <main className={`cover ${className}`} onClick={() => isOpen && toggle()}>
