@@ -23,25 +23,19 @@ const CardItem = ({
     <Card className={`fj-card ${mode}`}>
       <div className="card-body-wrapper">
         <CardHeader className="d-flex flex-row">
-          <img
-            src={author?.avatar || "https://via.placeholder.com/150"}
-            className="rounded-circle mr-3"
-            height="50px"
-            width="50px"
-            alt="avatar"
-          />
           <div>
             {mode === "placeholder" ? (
               <>
-                <CardTitle className="font-weight-bold mb-1 px-5">
+                <CardTitle className="card-main-title">
                   Placeholder Title
                 </CardTitle>
                 <CardText className="card-date">Placeholder Date</CardText>
               </>
             ) : (
               <>
-                <CardTitle className="font-weight-bold mb-1">
-                  {author?.name}
+                <CardTitle className="card-main-title">
+                  {/* {" "} */}
+                  {title.length > 40 ? subtitle.substr(0, 40) + "..." : title}
                 </CardTitle>
                 <CardText className="card-date">{date}</CardText>
               </>
@@ -61,17 +55,10 @@ const CardItem = ({
         <CardBody>
           {mode === "placeholder" ? (
             <>
-              <CardTitle className="card-main-title">
-                Placeholder Title
-              </CardTitle>
-              <CardSubtitle>Placeholder Subtitle</CardSubtitle>
+              <CardTitle>Placeholder Title</CardTitle>
             </>
           ) : (
             <>
-              <CardTitle className="card-main-title">
-                {" "}
-                {title.length > 40 ? subtitle.substr(0, 40) + "..." : title}
-              </CardTitle>
               <CardSubtitle>
                 {subtitle.length > 40
                   ? subtitle.substr(0, 40) + "..."

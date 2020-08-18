@@ -20,13 +20,6 @@ const CardListItem = ({
     <Card className={`fj-card fj-card-list ${mode}`}>
       <div className={`card-body-wrapper`}>
         <CardHeader className="d-flex flex-row">
-          <img
-            src={author?.avatar || "https://via.placeholder.com/150"}
-            className="rounded-circle mr-3"
-            height="50px"
-            width="50px"
-            alt="avatar"
-          />
           {mode === "placeholder" ? (
             <div>
               <CardTitle className="font-weight-bold mb-1">
@@ -36,9 +29,7 @@ const CardListItem = ({
             </div>
           ) : (
             <div>
-              <CardTitle className="font-weight-bold mb-1">
-                {author?.name}
-              </CardTitle>
+              <CardTitle className="card-main-title">{title}</CardTitle>
               <CardText className="card-date">{date}</CardText>
             </div>
           )}
@@ -53,7 +44,6 @@ const CardListItem = ({
             </>
           ) : (
             <>
-              <CardTitle className="card-main-title">{title}</CardTitle>
               <CardSubtitle>{subtitle}</CardSubtitle>
             </>
           )}
