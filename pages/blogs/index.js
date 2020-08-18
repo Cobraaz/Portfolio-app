@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BaseLayout from "components/layouts/BaseLayout";
-import BasePage from "components/BasePage";
+import BasePage from "components/layouts/BasePage";
 import { useGetUser } from "actions/user";
 import { Row, Button } from "reactstrap";
 import FilteringMenu from "components/Blogs/FilteringMenu";

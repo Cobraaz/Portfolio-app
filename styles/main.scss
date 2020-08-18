@@ -1,7 +1,5 @@
 // Components
 @import "./components/header";
-// @import "./components/footer";
-// @import "./components/card";
 
 // Pages
 @import "./pages/about";
@@ -76,6 +74,10 @@ body {
 
   transition: 0.3s;
 
+  a {
+    color: #63696e;
+  }
+
   .icons {
     @include animation-delay(4.5s);
     font-size: 33px;
@@ -103,20 +105,4 @@ body {
       color: #e4e6eb;
     }
   }
-}
-
-.clickable:hover {
-  cursor: pointer;
-}
-
-.hoverable:hover {
-  opacity: 0.7;
-}
-
-.red-text {
-  color: #f44336 !important;
-}
-
-.page-wrapper {
-  padding-top: 20px;
 }

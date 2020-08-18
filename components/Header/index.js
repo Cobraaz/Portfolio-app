@@ -22,7 +22,7 @@ const Header = ({
             width < 768 && isOpen ? "is-open" : "is-close"
           }`}
           dark
-          expand="md"
+          expand="xl"
         >
           <BsNavBrand />
           <NavbarToggler onClick={toggle} />

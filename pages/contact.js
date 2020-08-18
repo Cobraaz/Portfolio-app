@@ -1,5 +1,5 @@
 import BaseLayout from "components/layouts/BaseLayout";
-import BasePage from "components/BasePage";
+import BasePage from "components/layouts/BasePage";
 import { useGetUser } from "actions/user";
 import ContactForm from "components/contact/ContactForm";
 import { useContactMe } from "actions/contact";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BaseLayout from "components/layouts/BaseLayout";
-import BasePage from "components/BasePage";
+import BasePage from "components/layouts/BasePage";
 import { Row, Col, Button } from "reactstrap";
 import { useRouter } from "next/router";
 import { useGetUser } from "actions/user";
@@ -43,7 +43,8 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
               onClick={() => {
                 router.push("/portfolios/[id]", `/portfolios/${portfolio._id}`);
               }}
-              md="4"
+              lg="4"
+              md="6"
             >
               <PortfolioCard portfolio={portfolio}>
                 {dataU && isAuthorized(dataU, "admin") && (

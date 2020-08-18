@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BaseLayout from "components/layouts/BaseLayout";
-import BasePage from "components/BasePage";
+import BasePage from "components/layouts/BasePage";
 import { Row, Col } from "reactstrap";
 import { useGetUser } from "actions/user";
 import ProjectApi from "lib/api/projects";
@@ -36,7 +36,7 @@ const Projects = ({ projects: initialProjects }) => {
           {projects &&
             projects.map((project) => {
               return (
-                <Col key={project._id} md="4">
+                <Col key={project._id} lg="4" md="6">
                   <ProjectCard data={project}>
                     <>
                       {project.github && (
