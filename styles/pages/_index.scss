@@ -183,10 +183,22 @@
   box-shadow: -17px 13px 41px rgba(13, 78, 158, 0.3);
 }
 
-// .dark {
-//   .cover.cover-orange,
-//   .cover {
-//     background: rgba(255, 255, 255, 0.1);
-//   }
-//   transition: color 0.5s ease-out 0s, background 0s ease-out 0.2s;
-// }
+.btn-index {
+  background: linear-gradient(
+    to right,
+    rgba(37, 184, 213, 1) 0%,
+    rgba(117, 88, 165, 1) 99%
+  );
+  color: #fff;
+  font-size: 20px;
+  float: right;
+  border: 0;
+  width: 150px;
+  transition: all 1.3s ease 0s;
+  border-radius: 40px;
+}
+
+.btn-index:hover {
+  color: #fff;
+  opacity: 0.6;
+}

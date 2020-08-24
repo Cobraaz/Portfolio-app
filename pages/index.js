@@ -6,6 +6,7 @@ import Typed from "react-typed";
 import { useGetUser } from "actions/user";
 import Particles from "react-particles-js";
 import { ROLES, particlesOptionsIndex } from "helpers";
+import Link from "next/link";
 
 const Index = () => {
   const [isFlipping, setIsFlipping] = useState(false);
@@ -94,6 +95,17 @@ const Index = () => {
                 />
                 <div className="hero-welcome-bio">
                   <h1>Let's take a look on my work.</h1>
+                </div>
+                <div className="hero-welcome-bio">
+                  <Link href="/projects">
+                    <a className="btn btn-index">
+                      <i
+                        className="ri-send-plane-line "
+                        style={{ verticalAlign: "middle" }}
+                      ></i>{" "}
+                      LET'S GO
+                    </a>
+                  </Link>
                 </div>
               </Col>
             </Row>
