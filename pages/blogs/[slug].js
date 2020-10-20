@@ -21,12 +21,16 @@ import axios from "axios";
 const BlogDetail = ({ blog, preview, slug }) => {
   const [comments, setComments] = useState();
 
-  useEffect(async () => {
-    const commentData = await axios.get(
-      `${process.env.PORTFOLIO_API_URL}/Blogcomments/getcomment/${slug}`
-    );
+  useEffect(() => {
+    async function fetchData() {
+      const commentData = await axios.get(
+        `${process.env.PORTFOLIO_API_URL}/Blogcomments/getcomment/${slug}`
+      );
+      setComments(commentData.data[0]);
+    }
+
     // console.log(...commentData.data);
-    setComments(commentData.data[0]);
+    fetchData();
   }, []);
 
   // console.log(comments);
@@ -98,13 +102,17 @@ const BlogDetail = ({ blog, preview, slug }) => {
             <hr />
             {blog.content && <BlogContent content={blog.content} />}
             <hr />
-            <ul class="comment-section">
+            <ul className="comment-section">
               {/* {console.log("Comments", comments.comments && comments.comments)} */}
               {comments &&
                 comments.comments.map((comment, index) => (
-                  <ShowComments comments={comment} index={Boolean(index % 2)} />
+                  <ShowComments
+                    comments={comment}
+                    index={index}
+                    extra={Boolean(index % 2)}
+                  />
                 ))}
-              <li class="write-new">
+              <li className="write-new">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <textarea
                     placeholder="Write your comment here"

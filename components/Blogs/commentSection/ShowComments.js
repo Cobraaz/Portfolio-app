@@ -1,8 +1,12 @@
 import { formatDate } from "helpers/functions";
 
-const ShowComments = ({ comments: { text, name, avatar, date }, index }) => {
+const ShowComments = ({
+  comments: { text, name, avatar, date },
+  index,
+  extra,
+}) => {
   return (
-    <li className={`comment ${index ? "author" : "user"}-comment`}>
+    <li key={index} className={`comment ${extra ? "author" : "user"}-comment`}>
       <div className="info">
         <div href="#">{name}</div>
         <span>{formatDate(date, "LL")}</span>
