@@ -9,7 +9,7 @@ const ShowComments = ({
     <li key={index} className={`comment ${extra ? "author" : "user"}-comment`}>
       <div className="info">
         <div href="#">{name}</div>
-        <span>{formatDate(date, "LL")}</span>
+        <span>{formatDate(date, "LLLL")}</span>
       </div>
 
       <div className="avatar" href="#">

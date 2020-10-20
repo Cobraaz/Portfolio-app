@@ -34,20 +34,6 @@ export const AdminMenu = () => {
             title="Create Project"
           />
         </DropdownItem>
-        <DropdownItem>
-          <BsNavLink
-            className="port-dropdown-item"
-            href="/blogs/editor"
-            title="Blog Editor"
-          />
-        </DropdownItem>
-        <DropdownItem>
-          <BsNavLink
-            className="port-dropdown-item"
-            href="/dashboard"
-            title="Dashboard"
-          />
-        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );
