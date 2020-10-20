@@ -23,7 +23,7 @@ const BlogDetail = ({ blog, preview, slug }) => {
 
   useEffect(async () => {
     const commentData = await axios.get(
-      `http://localhost:3001/api/v1/Blogcomments/getcomment/${slug}`
+      `${process.env.PORTFOLIO_API_URL}/Blogcomments/getcomment/${slug}`
     );
     // console.log(...commentData.data);
     setComments(commentData.data[0]);
@@ -55,7 +55,7 @@ const BlogDetail = ({ blog, preview, slug }) => {
 
     if (data && d.comment) {
       const res = await axios.post(
-        `http://localhost:3001/api/v1/Blogcomments/${slug}`,
+        `${process.env.PORTFOLIO_API_URL}/Blogcomments/${slug}`,
         combine
       );
       // console.log(res.data);
