@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Row, Col } from "reactstrap";
+import _ from "lodash";
+
 import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/layouts/BasePage";
 import BlogHeader from "components/Blogs/BlogHeader";
@@ -12,34 +14,27 @@ import Fallback from "components/Blogs/Fallback";
 
 import { useGetUser } from "actions/user";
 import { getBlogBySlug, getAllBlogs } from "lib/api/blogs";
+import BlogCommentsApi from "lib/api/blogComments";
 import { formatDate } from "helpers/functions";
 import { urlFor } from "lib/api/blogs";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const BlogDetail = ({ blog, preview, slug }) => {
-  const [comments, setComments] = useState();
-
-  useEffect(() => {
-    async function fetchData() {
-      const commentData = await axios.get(
-        `${process.env.PORTFOLIO_API_URL}/Blogcomments/getcomment/${slug}`
-      );
-      setComments(commentData.data[0]);
-    }
-
-    // console.log(...commentData.data);
-    fetchData();
-  }, []);
-
-  // console.log(comments);
+const BlogDetail = ({ blog, preview, slug, commentData }) => {
+  // console.log(commentData[0]);
+  // const {
+  //   [0]: { comments: commentData1 },
+  // } = commentData;
+  // console.log("comments", commentData1);
+  const [comments, setComments] = useState(
+    commentData && (commentData[0] || {})
+  );
   const router = useRouter();
   const { data, loading } = useGetUser();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (d, e) => {
-    // console.log("d", d);
     const errorMessage = () => {
       if (!d.comment) {
         return "Please first enter comment";
@@ -58,12 +53,9 @@ const BlogDetail = ({ blog, preview, slug }) => {
     };
 
     if (data && d.comment) {
-      const res = await axios.post(
-        `${process.env.PORTFOLIO_API_URL}/Blogcomments/${slug}`,
-        combine
-      );
-      // console.log(res.data);
-      setComments(res.data);
+      const json = await new BlogCommentsApi().update(slug, combine);
+
+      setComments(json.data);
     } else {
       toast.error(`${errorMessage()}`, {
         position: "top-right",
@@ -103,14 +95,15 @@ const BlogDetail = ({ blog, preview, slug }) => {
             {blog.content && <BlogContent content={blog.content} />}
             <hr />
             <ul className="comment-section">
-              {/* {console.log("Comments", comments.comments && comments.comments)} */}
-              {comments &&
+              {!_.isEmpty(comments) &&
                 comments.comments.map((comment, index) => (
-                  <ShowComments
-                    comments={comment}
-                    index={index}
-                    extra={Boolean(index % 2)}
-                  />
+                  <div key={index}>
+                    <ShowComments
+                      comments={comment}
+                      index={index}
+                      extra={Boolean(index % 2)}
+                    />
+                  </div>
                 ))}
               <li className="write-new">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -136,14 +129,13 @@ const BlogDetail = ({ blog, preview, slug }) => {
 export async function getStaticProps({ params, preview = false, previewData }) {
   // Todo: pass preview to getBlogBySlug and fetch draft Blog, Comments
   const blog = await getBlogBySlug(params.slug, preview);
-  // const comments = await axios.get(
-  //   `http://localhost:3001/api/v1/Blogcomments/getcomment/${params.slug}`
-  // );
-  // console.log(comments.data);
+  const json = await new BlogCommentsApi().getAll(params.slug);
   const slug = params.slug;
-  // const commentData = comments.data;
+  const commentData = {
+    ...json.data,
+  };
   return {
-    props: { blog, preview, slug },
+    props: { blog, preview, slug, commentData },
     revalidate: 1,
   };
 }
