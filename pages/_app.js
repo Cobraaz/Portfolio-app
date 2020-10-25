@@ -25,7 +25,7 @@ import "highlight.js/styles/darcula.css";
 import "react-toggle/style.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-toastify/dist/ReactToastify.css";
-import "react-slideshow-image/dist/styles.css";
+// import "react-slideshow-image/dist/styles.css";
 import "remixicon/fonts/remixicon.css";
 import "styles/main.scss";
 
