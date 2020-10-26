@@ -21,6 +21,7 @@ const ProjectForm = ({ onSubmit, initialData = {} }) => {
           type="text"
           className="form-control"
           id="header"
+          required
         />
       </div>
 
@@ -32,6 +33,7 @@ const ProjectForm = ({ onSubmit, initialData = {} }) => {
           type="text"
           className="form-control"
           id="img"
+          required
         />
       </div>
 
@@ -43,6 +45,7 @@ const ProjectForm = ({ onSubmit, initialData = {} }) => {
           type="text"
           className="form-control"
           id="title"
+          required
         />
       </div>
 
@@ -54,6 +57,7 @@ const ProjectForm = ({ onSubmit, initialData = {} }) => {
           type="text"
           className="form-control"
           id="description"
+          required
         />
       </div>
 
@@ -65,6 +69,7 @@ const ProjectForm = ({ onSubmit, initialData = {} }) => {
           type="text"
           className="form-control"
           id="github"
+          required
         />
       </div>
 
@@ -77,6 +82,7 @@ const ProjectForm = ({ onSubmit, initialData = {} }) => {
           type="text"
           className="form-control"
           id="link"
+          required
         ></textarea>
       </div>
 
