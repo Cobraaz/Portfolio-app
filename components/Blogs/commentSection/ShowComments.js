@@ -1,4 +1,5 @@
 import { formatDate } from "helpers/functions";
+import { Button } from "reactstrap";
 
 const ShowComments = ({
   comments: { text, name, avatar, date },
@@ -16,7 +17,36 @@ const ShowComments = ({
         <img src={avatar} width="35" alt="Profile Avatar" title={name} />
       </div>
 
-      <p>{text}</p>
+      <p>
+        {text}
+        <Button
+          onClick={(e) => console.log(e)}
+          outline
+          color="danger"
+          size="sm"
+          className="ml-2 justify-content-end blog-delete"
+        >
+          <i className={`ri-delete-bin-2-fill clickable icons `}></i>
+        </Button>
+        <Button
+          onClick={(e) => deleteCard(e, data._id)}
+          outline
+          color="warning"
+          size="sm"
+          className=" ml-2 justify-content-end blog-delete"
+        >
+          <i className={`ri-thumb-down-fill clickable icons `}></i>
+        </Button>
+        <Button
+          onClick={(e) => console.log("like")}
+          outline
+          color="success"
+          size="sm"
+          className="blog-delete"
+        >
+          <i className={`ri-thumb-up-fill clickable icons `}></i>
+        </Button>
+      </p>
     </li>
   );
 };

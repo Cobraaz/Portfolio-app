@@ -92,7 +92,7 @@ const BlogDetail = ({ blog, preview, slug, commentData }) => {
               date={formatDate(blog.date, "LL")}
             />
             <hr />
-            {blog.content && <BlogContent content={blog.content} />}
+            {/* {blog.content && <BlogContent content={blog.content} />} */}
             <hr />
             <ul className="comment-section">
               {!_.isEmpty(comments) &&
