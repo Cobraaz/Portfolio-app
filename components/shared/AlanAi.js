@@ -3,10 +3,7 @@ import { useRouter } from "next/router";
 
 const AlanAi = () => {
   const router = useRouter();
-  const alanResponse = ["Opening...", "ok", "yeah taking", "alright"];
-  const alanRandomResponse = Math.floor(Math.random() * alanResponse.length);
   useEffect(() => {
-    console.log("Hello from alan-ai");
     const alanBtn = require("@alan-ai/alan-sdk-web");
     alanBtn({
       key: process.env.ALAN_AI,
@@ -39,14 +36,15 @@ const AlanAi = () => {
               console.log(found);
             }
             if (found) {
-              alanBtn().playText(alanResponse[alanRandomResponse]);
+              alanBtn().playText(
+                "(opening...|ok|yeah taking|working on it|alright)"
+              );
             }
-
             break;
           case "Blog":
             router.push(`${process.env.BASE_URL}/blogs/${blog}`);
 
-            alanBtn().playText(alanResponse[alanRandomResponse]);
+            alanBtn().play("(opening...|ok|yeah taking|working on it|alright)");
             break;
         }
       },
