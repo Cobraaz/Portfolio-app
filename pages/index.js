@@ -7,6 +7,7 @@ import { useGetUser } from "actions/user";
 import Particles from "react-particles-js";
 import { ROLES, particlesOptionsIndex } from "helpers";
 import Link from "next/link";
+import AlanAi from "components/shared/AlanAi";
 
 const Index = () => {
   const [isFlipping, setIsFlipping] = useState(false);
@@ -17,11 +18,23 @@ const Index = () => {
     startAnimation();
     return () => flipInterval.current && clearInterval(flipInterval.current);
   }, []);
-
   const startAnimation = () => {
     flipInterval.current = setInterval(() => {
       setIsFlipping((prevFlipping) => !prevFlipping);
     }, 10000);
+  };
+
+  useEffect(() => {
+    return () => {
+      window.__isIndexLoadeded = true;
+    };
+  }, []);
+
+  const createAlanBtnOneTime = () => {
+    if (typeof window !== "undefined") {
+      return window.__isIndexLoadeded ? null : <AlanAi />;
+    }
+    return <AlanAi />;
   };
 
   return (
@@ -33,6 +46,7 @@ const Index = () => {
       footer
       className={`cover ${isFlipping ? "cover-orange" : "cover-blue"}`}
     >
+      {createAlanBtnOneTime()}
       <Particles className="particles" params={particlesOptionsIndex} />
       <BasePage indexPage title="Portfolio - Anuj Bansal">
         <div className="main-section">

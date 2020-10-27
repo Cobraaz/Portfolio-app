@@ -19,7 +19,7 @@ import { formatDate } from "helpers/functions";
 import { urlFor } from "lib/api/blogs";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
-import axios from "axios";
+// import axios from "axios";
 
 const BlogDetail = ({ blog, preview, slug, commentData }) => {
   // console.log(commentData[0]);
@@ -92,8 +92,9 @@ const BlogDetail = ({ blog, preview, slug, commentData }) => {
               date={formatDate(blog.date, "LL")}
             />
             <hr />
-            {/* {blog.content && <BlogContent content={blog.content} />} */}
+            {blog.content && <BlogContent content={blog.content} />}
             <hr />
+            <h1>Development Mode</h1>
             <ul className="comment-section">
               {!_.isEmpty(comments) &&
                 comments.comments.map((comment, index) => (
