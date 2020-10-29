@@ -12,7 +12,10 @@ const ThemeToggle = ({ onChange }) => {
           checked: <FontAwesomeIcon inverse icon="sun" />,
           unchecked: <FontAwesomeIcon inverse icon="moon" />,
         }}
-        onChange={onChange}
+        onChange={() => {
+          onChange();
+          setCheckedTheme(!checkedTheme);
+        }}
         checked={checkedTheme}
       />
       <button
