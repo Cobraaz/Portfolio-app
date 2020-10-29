@@ -7,7 +7,7 @@ import { useGetUser } from "actions/user";
 import Particles from "react-particles-js";
 import { ROLES, particlesOptionsIndex } from "helpers";
 import Link from "next/link";
-import AlanAi from "components/shared/AlanAi";
+import AlanAi from "components/AlanAi";
 
 const Index = () => {
   const [isFlipping, setIsFlipping] = useState(false);
