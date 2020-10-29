@@ -27,6 +27,9 @@ const AlanAi = () => {
 
             alanBtn().play("(opening...|ok|yeah taking|working on it|alright)");
             break;
+          case "theme-change":
+            document.getElementById("themeChangeButtonId").click();
+            break;
         }
       },
     });

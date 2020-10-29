@@ -107,3 +107,11 @@ body {
     }
   }
 }
+
+.button-invisible {
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+  z-index: -99;
+  display: none;
+}
