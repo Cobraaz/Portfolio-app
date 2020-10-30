@@ -5,8 +5,6 @@ const openPage = (page) => {
     return "/about";
   } else if (page.includes("port")) {
     return "/portfolios";
-  } else if (page.includes("pro")) {
-    return "/projects";
   } else if (page[0] === "b") {
     return "/blogs";
   } else if (page.includes("cv")) {
