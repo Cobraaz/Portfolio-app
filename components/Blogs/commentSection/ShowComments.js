@@ -29,20 +29,20 @@ const ShowComments = ({
           <i className={`ri-delete-bin-2-fill clickable icons `}></i>
         </Button>
         <Button
-          onClick={(e) => deleteCard(e, data._id)}
+          // onClick={(e) => deleteCard(e, data._id)}
           outline
-          color="warning"
+          color="secondary"
           size="sm"
-          className=" ml-2 justify-content-end blog-delete"
+          className=" ml-2 justify-content-end blog-like-unlike"
         >
           <i className={`ri-thumb-down-fill clickable icons `}></i>
         </Button>
         <Button
           onClick={(e) => console.log("like")}
           outline
-          color="success"
+          color="secondary"
           size="sm"
-          className="blog-delete"
+          className="blog-like-unlike"
         >
           <i className={`ri-thumb-up-fill clickable icons `}></i>
         </Button>

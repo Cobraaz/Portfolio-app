@@ -228,4 +228,18 @@
 .blog-delete {
   float: right;
   right: 0px;
+  border: none;
+  border-radius: 50%;
+  color: #cb4e4e;
+}
+
+.blog-delete:hover {
+  background-color: #d9534f;
+}
+
+.blog-like-unlike {
+  float: right;
+  right: 0px;
+  border: none;
+  border-radius: 50%;
 }
