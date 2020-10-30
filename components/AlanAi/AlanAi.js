@@ -6,7 +6,7 @@ const AlanAi = () => {
   const router = useRouter();
   useEffect(() => {
     const alanBtn = require("@alan-ai/alan-sdk-web");
-    let moving = 150;
+    // let moving = 150;
     alanBtn({
       key: process.env.ALAN_AI,
       rootEl: document.getElementById("alan-btn"),
@@ -20,11 +20,26 @@ const AlanAi = () => {
               navigator.userAgent
             );
             if (isMobile) {
-              window.scroll(0, moving);
-              moving = moving + 400;
+              // document.getElementById("themeChangeButtonId").click();
+              let elem = document.getElementById(`${article}projectcard`);
+              elem.scrollIntoView({
+                behavior: "smooth",
+              });
+              // window.scrollTo({
+              //   top: moving,
+              //   behavior: "smooth",
+              // });
+              // moving = moving + 400;
             } else {
               if (article % 3 === 0) {
-                window.scroll(0, article * 150);
+                // window.scrollTo({
+                //   top: article * 150,
+                //   behavior: "smooth",
+                // });
+                let elem = document.getElementById(`${article}projectcard`);
+                elem.scrollIntoView({
+                  behavior: "smooth",
+                });
               }
             }
 

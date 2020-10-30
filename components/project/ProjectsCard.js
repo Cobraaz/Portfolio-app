@@ -9,10 +9,9 @@ import {
   Button,
 } from "reactstrap";
 
-const ProjectsCard = ({ data, children }) => {
+const ProjectsCard = ({ data, children, i }) => {
   return (
-    <Card className="project-card">
-      
+    <Card id={`${i}projectcard`} className="project-card">
       <CardHeader className="project-card-header">{data.header}</CardHeader>
 
       <CardImg

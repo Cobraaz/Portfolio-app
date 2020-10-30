@@ -34,10 +34,10 @@ const Projects = ({ projects: initialProjects }) => {
         <h1 className="project-header-title">My Recent Works</h1>
         <Row className="mt-3 mb-5">
           {projects &&
-            projects.map((project) => {
+            projects.map((project, i) => {
               return (
                 <Col key={project._id} lg="4" md="6">
-                  <ProjectCard data={project}>
+                  <ProjectCard data={project} i={i}>
                     <>
                       {project.github && (
                         <a
