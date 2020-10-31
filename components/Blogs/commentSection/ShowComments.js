@@ -1,5 +1,5 @@
 import { formatDate } from "helpers/functions";
-import { Button } from "reactstrap";
+import CommentsButtons from "./CommentsButtons";
 
 const ShowComments = ({
   comments: { text, name, avatar, date },
@@ -7,7 +7,7 @@ const ShowComments = ({
   extra,
 }) => {
   return (
-    <li key={index} className={`comment ${extra ? "author" : "user"}-comment`}>
+    <li className={`comment ${extra ? "author" : "user"}-comment`}>
       <div className="info">
         <div href="#">{name}</div>
         <span>{formatDate(date, "LLLL")}</span>
@@ -19,33 +19,7 @@ const ShowComments = ({
 
       <p>
         {text}
-        <Button
-          onClick={(e) => console.log(e)}
-          outline
-          color="danger"
-          size="sm"
-          className="ml-2 justify-content-end blog-delete"
-        >
-          <i className={`ri-delete-bin-2-fill clickable icons `}></i>
-        </Button>
-        <Button
-          // onClick={(e) => deleteCard(e, data._id)}
-          outline
-          color="secondary"
-          size="sm"
-          className=" ml-2 justify-content-end blog-like-unlike"
-        >
-          <i className={`ri-thumb-down-fill clickable icons `}></i>
-        </Button>
-        <Button
-          onClick={(e) => console.log("like")}
-          outline
-          color="secondary"
-          size="sm"
-          className="blog-like-unlike"
-        >
-          <i className={`ri-thumb-up-fill clickable icons `}></i>
-        </Button>
+        <CommentsButtons index={index} />
       </p>
     </li>
   );
