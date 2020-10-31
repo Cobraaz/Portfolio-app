@@ -6,7 +6,7 @@ const AlanAi = () => {
   const router = useRouter();
   useEffect(() => {
     const alanBtn = require("@alan-ai/alan-sdk-web");
-    // let moving = 150;
+
     alanBtn({
       key: process.env.ALAN_AI,
       rootEl: document.getElementById("alan-btn"),
@@ -15,41 +15,33 @@ const AlanAi = () => {
           case "project-open":
             router.push(`${process.env.BASE_URL}/projects`);
             break;
-          case "project-current":
-            let isMobile = /iPhone|iPad|iPod|Android/i.test(
-              navigator.userAgent
-            );
-            if (isMobile) {
-              // document.getElementById("themeChangeButtonId").click();
-              let elem = document.getElementById(`${article}projectcard`);
-              elem.scrollIntoView({
-                behavior: "smooth",
-              });
-              // window.scrollTo({
-              //   top: moving,
-              //   behavior: "smooth",
-              // });
-              // moving = moving + 400;
-            } else {
-              if (article % 3 === 0) {
-                // window.scrollTo({
-                //   top: article * 150,
-                //   behavior: "smooth",
-                // });
-                let elem = document.getElementById(`${article}projectcard`);
-                elem.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }
-            }
 
+          case "project-current":
+            let elemOld = document.getElementById(
+              `${article > 0 ? article - 1 : article}projectcard`
+            );
+            elemOld.style.borderBottom = "none";
+
+            let elemNew = document.getElementById(`${article}projectcard`);
+            elemNew.scrollIntoView({
+              behavior: "smooth",
+            });
+            elemNew.style.borderBottom = "10px solid #CCF11D";
             break;
+
           case "repository-open":
             console.log("repository-open");
-            window.open(repositoryLink, "_blank");
+            document
+              .getElementById(`${repositoryLink}projectcard`)
+              .getElementsByTagName("a")[0]
+              .click();
             break;
 
           case "OpenPages":
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
             const found = openPage(page);
             if (found) {
               router.push(`${process.env.BASE_URL}${found}`);
@@ -62,6 +54,10 @@ const AlanAi = () => {
             break;
 
           case "Blog":
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
             router.push(`${process.env.BASE_URL}/blogs/${blog}`);
 
             alanBtn().play("(opening...|ok|yeah taking|working on it|alright)");
