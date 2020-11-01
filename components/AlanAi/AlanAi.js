@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import openPage from "components/AlanAi/openPage";
+import pageName from "components/AlanAi/pageName";
 
 const AlanAi = () => {
   const router = useRouter();
@@ -12,6 +13,13 @@ const AlanAi = () => {
       rootEl: document.getElementById("alan-btn"),
       onCommand: ({ command, page, blog, repositoryLink, article }) => {
         switch (command) {
+          case "page-name":
+            let href = window.location.href;
+            let name = href.slice(22);
+            console.log("name", name);
+            alanBtn().playText(`This is the ${pageName(name)} screen`);
+            break;
+
           case "project-open":
             router.push(`${process.env.BASE_URL}/projects`);
             break;
