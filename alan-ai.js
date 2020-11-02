@@ -6,6 +6,27 @@ visualHints(
   'Say "How should I use this?"'
 );
 
+intent("what is this", "what screen I'm viewing", (p) => {
+  p.play({ command: "page-name" });
+});
+
+const cvDownload = context(() => {
+  intent("(yes|sure)", (p) => {
+    p.play({ command: "cv-download" });
+  });
+
+  intent("no", (p) => {
+    p.play("Sure, sounds good to me.");
+  });
+});
+
+intent("open the (page|) cv", async (p) => {
+  await p.play("(opening...|ok|yeah taking|working on it|alright)");
+  await p.play({ command: "cv-open" });
+  await p.play("Do you want me to download it?");
+  p.then(cvDownload);
+});
+
 const URL = "https://portfolio-anujbansal-api.herokuapp.com/api/v1";
 let projectsData = [];
 
@@ -66,7 +87,7 @@ const RepositoryOpen = context(() => {
     const repository = p.repository.value.toLowerCase();
     let repositoryLink = "";
 
-    projectsData.forEach((data) => {
+    projectsData.forEach((data, index) => {
       var middle = Math.floor(repository.length / 2);
       var before = repository.lastIndexOf(" ", middle);
       var after = repository.indexOf(" ", middle + 1);
@@ -84,7 +105,7 @@ const RepositoryOpen = context(() => {
         data.title.toLowerCase().includes(leftSlice) ||
         data.title.toLowerCase().includes(rightSlice)
       ) {
-        repositoryLink = data.github;
+        repositoryLink = index;
         return;
         //             p.play({ command: "repository-open", repositoryLink });
         //             p.play("");
@@ -118,7 +139,7 @@ intent(
 // })
 
 const pagesList =
-  "index|home|homepage|about|portfolio|portfolios|blog|blogs|CV|cv|contact|login";
+  "index|home|homepage|about|portfolio|portfolios|blog|blogs|contact|login";
 
 intent(
   `open (the|) (page|) $(page ${pagesList})`,

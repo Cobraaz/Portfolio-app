@@ -13,6 +13,13 @@ const AlanAi = () => {
       rootEl: document.getElementById("alan-btn"),
       onCommand: ({ command, page, blog, repositoryLink, article }) => {
         switch (command) {
+          case "cv-download":
+            document.getElementsByClassName("ri-download-2-line")[0].click();
+            break;
+
+          case "cv-open":
+            router.push(`${process.env.BASE_URL}/cv`);
+            break;
           case "page-name":
             let href = window.location.href;
             let name = href.slice(22);
