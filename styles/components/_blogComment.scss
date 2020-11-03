@@ -80,7 +80,7 @@
 
 /* The comment text */
 
-.comment p {
+.comment section {
   line-height: 1.5;
   padding: 18px 22px;
   width: 50%;
@@ -88,16 +88,16 @@
   word-wrap: break-word;
 }
 
-.comment.user-comment p {
+.comment.user-comment section {
   background-color: #f3f3f3;
 }
 
-.comment.author-comment p {
+.comment.author-comment section {
   background-color: #e2f8ff;
   order: 1;
 }
 
-.user-comment p:after {
+.user-comment section:after {
   content: "";
   position: absolute;
   width: 15px;
@@ -109,7 +109,7 @@
   top: 18px;
 }
 
-.author-comment p:after {
+.author-comment section:after {
   content: "";
   position: absolute;
   width: 15px;
@@ -168,7 +168,7 @@
 @media (max-width: 800px) {
   /* Make the paragraph in the comments take up the whole width,
     forcing the avatar and user info to wrap to the next line*/
-  .comment p {
+  .comment section {
     width: 100%;
   }
 
@@ -183,7 +183,7 @@
     order: 2;
   }
 
-  .comment.user-comment p {
+  .comment.user-comment section {
     order: 1;
   }
 
@@ -211,8 +211,8 @@
     width: auto;
   }
 
-  .comment.user-comment p:after,
-  .comment.author-comment p:after {
+  .comment.user-comment section:after,
+  .comment.author-comment section:after {
     width: 12px;
     height: 12px;
     top: initial;
@@ -250,4 +250,35 @@
   font-style: oblique;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
+}
+
+.dark {
+  .comment.user-comment section {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #dcdcdc;
+  }
+
+  .comment.author-comment section {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #dcdcdc;
+    order: 1;
+  }
+
+  .blog-like-unlike {
+    color: #dcdcdc;
+    float: right;
+    right: 0px;
+    border: none;
+    border-radius: 50%;
+  }
+
+  .write-new textarea {
+    color: #dcdcdc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .write-new button {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 }

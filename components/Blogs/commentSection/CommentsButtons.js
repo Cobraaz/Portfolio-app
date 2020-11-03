@@ -1,6 +1,12 @@
 import { Button } from "reactstrap";
 
-const CommentsButtons = ({ index }) => {
+const CommentsButtons = ({
+  index,
+  deleteComment,
+  loginInUser,
+  authId,
+  commentId,
+}) => {
   return (
     <>
       <span className="blog-likes-text">
@@ -8,15 +14,20 @@ const CommentsButtons = ({ index }) => {
         {index}
       </span>
       <div style={{ justifyContent: "space-around" }}>
-        <Button
-          onClick={(e) => console.log(e)}
-          outline
-          color="danger"
-          size="sm"
-          className="ml-2 justify-content-end blog-delete"
-        >
-          <i className={`ri-delete-bin-2-fill clickable icons `}></i>
-        </Button>
+        {loginInUser === authId && (
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              deleteComment(e, commentId);
+            }}
+            outline
+            color="danger"
+            size="sm"
+            className="ml-2 justify-content-end blog-delete"
+          >
+            <i className={`ri-delete-bin-2-fill clickable icons `}></i>
+          </Button>
+        )}
 
         <Button
           // onClick={(e) => deleteCard(e, data._id)}

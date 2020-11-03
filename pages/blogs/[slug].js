@@ -21,15 +21,14 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 // import axios from "axios";
 
-const BlogDetail = ({ blog, preview, slug, commentData }) => {
-  // console.log(commentData[0]);
-  // const {
-  //   [0]: { comments: commentData1 },
-  // } = commentData;
-  // console.log("comments", commentData1);
-  const [comments, setComments] = useState(
-    commentData && (commentData[0] || {})
-  );
+const BlogDetail = ({
+  blog,
+  preview,
+  slug,
+  blogCommentData,
+  blogcommentId,
+}) => {
+  const [comments, setComments] = useState(blogCommentData);
   const router = useRouter();
   const { data, loading } = useGetUser();
   const { register, handleSubmit } = useForm();
@@ -69,6 +68,18 @@ const BlogDetail = ({ blog, preview, slug, commentData }) => {
     }
   };
 
+  const _deleteComment = async (e, commentId) => {
+    e.stopPropagation();
+    const isConfirm = confirm(
+      "Are you sure you want to delete this portfolio?"
+    );
+    if (isConfirm) {
+      await new BlogCommentsApi().delete(blogcommentId, commentId);
+
+      setComments(comments.filter((p) => p._id !== commentId));
+    }
+  };
+
   if (!router.isFallback && !blog?.slug) {
     return <ErrorPage statusCode="404" />;
   }
@@ -97,11 +108,13 @@ const BlogDetail = ({ blog, preview, slug, commentData }) => {
             <h1>Development Mode</h1>
             <ul className="comment-section">
               {!_.isEmpty(comments) &&
-                comments.comments.map((comment, index) => (
+                comments.map((comment, index) => (
                   <div key={index}>
                     <ShowComments
                       comments={comment}
                       index={index}
+                      deleteComment={_deleteComment}
+                      loginInUser={data ? data.sub : ""}
                       extra={Boolean(index % 2)}
                     />
                   </div>
@@ -130,13 +143,13 @@ const BlogDetail = ({ blog, preview, slug, commentData }) => {
 export async function getStaticProps({ params, preview = false, previewData }) {
   // Todo: pass preview to getBlogBySlug and fetch draft Blog, Comments
   const blog = await getBlogBySlug(params.slug, preview);
-  const json = await new BlogCommentsApi().getAll(params.slug);
+  const { data } = await new BlogCommentsApi().getAll(params.slug);
   const slug = params.slug;
-  const commentData = {
-    ...json.data,
-  };
+  let [blogComments] = data;
+  let blogCommentData = blogComments ? blogComments.comments : [];
+  let blogcommentId = blogComments ? blogComments._id : "";
   return {
-    props: { blog, preview, slug, commentData },
+    props: { blog, preview, slug, blogCommentData, blogcommentId },
     revalidate: 1,
   };
 }
