@@ -70,9 +70,7 @@ const BlogDetail = ({
 
   const _deleteComment = async (e, commentId) => {
     e.stopPropagation();
-    const isConfirm = confirm(
-      "Are you sure you want to delete this portfolio?"
-    );
+    const isConfirm = confirm("Are you sure you want to delete this comment?");
     if (isConfirm) {
       await new BlogCommentsApi().delete(blogcommentId, commentId);
 
