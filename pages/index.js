@@ -37,8 +37,10 @@ const nextVariants = {
 const buttonVariants = {
   hover: {
     color: "#fff",
-    scale: 1.5,
+    scale: 1.3,
     textShadow: "0px 0px 8px rgb(255,255,255)",
+    backgroundImage:
+      "linear-gradient(43deg,#4158d0 0%,#ffcc70 46%,#c850c0 100%)",
     boxShadow: "0px 0px 8px rgb(255,255,255)",
     transition: {
       duration: 0.2,
