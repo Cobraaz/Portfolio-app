@@ -33,6 +33,14 @@ const BlogDetail = ({
   const { data, loading } = useGetUser();
   const { register, handleSubmit } = useForm();
 
+  useEffect(() => {
+    let navbar = document.getElementsByClassName("port-navbar");
+    navbar[0].style.position = "fixed";
+    return () => {
+      navbar[0].style.position = "";
+    };
+  }, []);
+
   const onSubmit = async (d, e) => {
     const errorMessage = () => {
       if (!d.comment) {
@@ -86,55 +94,69 @@ const BlogDetail = ({
     console.log("Loading fallback page");
     return <Fallback />;
   }
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <BaseLayout user={data} loading={loading}>
-      <BasePage title="Newest BLogs - Anuj Bansal" className="blog-detail-page">
-        <Row>
-          <Col md={{ size: 8, offset: 2 }}>
-            {preview && <PreviewAlert />}
-            <BlogHeader
-              title={blog.title}
-              subtitle={blog.subtitle}
-              coverImage={urlFor(blog.coverImage).height(600).url()}
-              author={blog.author}
-              date={formatDate(blog.date, "LL")}
-            />
-            <hr />
-            {blog.content && <BlogContent content={blog.content} />}
-            <hr />
-            <h1>Development Mode</h1>
-            <ul className="comment-section">
-              {!_.isEmpty(comments) &&
-                comments.map((comment, index) => (
-                  <div key={index}>
-                    <ShowComments
-                      comments={comment}
-                      index={index}
-                      deleteComment={_deleteComment}
-                      loginInUser={data ? data.sub : ""}
-                      extra={Boolean(index % 2)}
-                    />
-                  </div>
-                ))}
-              <li className="write-new">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <textarea
-                    placeholder="Write your comment here"
-                    name="comment"
-                    ref={register}
-                  ></textarea>
+    <>
+      <button size="sm" onClick={scrollToTop} className="scrollToTop">
+        <i class="ri-arrow-up-s-fill"></i>
+      </button>
+      <BaseLayout user={data} loading={loading}>
+        <BasePage
+          title="Newest BLogs - Anuj Bansal"
+          className="blog-detail-page"
+        >
+          <Row>
+            <Col md={{ size: 8, offset: 2 }}>
+              {preview && <PreviewAlert />}
+              <BlogHeader
+                title={blog.title}
+                subtitle={blog.subtitle}
+                coverImage={urlFor(blog.coverImage).height(600).url()}
+                author={blog.author}
+                date={formatDate(blog.date, "LL")}
+              />
+              <hr />
+              {blog.content && <BlogContent content={blog.content} />}
+              <hr />
+              <h1>Development Mode</h1>
+              <ul className="comment-section">
+                {!_.isEmpty(comments) &&
+                  comments.map((comment, index) => (
+                    <div key={index}>
+                      <ShowComments
+                        comments={comment}
+                        index={index}
+                        deleteComment={_deleteComment}
+                        loginInUser={data ? data.sub : ""}
+                        extra={Boolean(index % 2)}
+                      />
+                    </div>
+                  ))}
+                <li className="write-new">
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <textarea
+                      placeholder="Write your comment here"
+                      name="comment"
+                      ref={register}
+                    ></textarea>
 
-                  <div>
-                    <button type="submit">Submit</button>
-                  </div>
-                </form>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      </BasePage>
-    </BaseLayout>
+                    <div>
+                      <button type="submit">Submit</button>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </Col>
+          </Row>
+        </BasePage>
+      </BaseLayout>
+    </>
   );
 };
 
