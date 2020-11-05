@@ -184,7 +184,14 @@
 }
 
 .btn-index {
-  background: linear-gradient(to right, #1eb6e5 0%, #1995ff 99%);
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+
   color: #fff;
   font-size: 20px;
   float: right;
@@ -192,9 +199,4 @@
   width: 150px;
   transition: all 1.3s ease 0s;
   border-radius: 40px;
-}
-
-.btn-index:hover {
-  color: #fff;
-  opacity: 0.6;
 }

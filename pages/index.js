@@ -8,6 +8,44 @@ import Particles from "react-particles-js";
 import { ROLES, particlesOptionsIndex } from "helpers";
 import Link from "next/link";
 import AlanAi from "components/AlanAi/AlanAi";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: 0.5, duration: 1.5 },
+  },
+  exit: {
+    x: "-100vh",
+    transition: { ease: "easeInOut" },
+  },
+};
+
+const nextVariants = {
+  hidden: {
+    x: "100vw",
+  },
+  visible: {
+    x: 0,
+    transition: { type: "spring", stiffness: 20 },
+  },
+};
+
+const buttonVariants = {
+  hover: {
+    color: "#fff",
+    scale: 1.5,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      duration: 0.2,
+      yoyo: Infinity,
+    },
+  },
+};
 
 const Index = () => {
   const [isFlipping, setIsFlipping] = useState(false);
@@ -49,7 +87,14 @@ const Index = () => {
       {createAlanBtnOneTime()}
       <Particles className="particles" params={particlesOptionsIndex} />
       <BasePage indexPage title="Portfolio - Anuj Bansal">
-        <div className="main-section">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          whileHover={buttonVariants}
+          className="main-section"
+        >
           <div className="background-image">
             <img src="/images/background-index.png" />
           </div>
@@ -110,21 +155,28 @@ const Index = () => {
                 <div className="hero-welcome-bio">
                   <h1>Let's take a look on my work.</h1>
                 </div>
-                <div className="hero-welcome-bio">
+                <motion.div
+                  variants={nextVariants}
+                  className="hero-welcome-bio"
+                >
                   <Link href="/projects">
-                    <a className="btn btn-index">
+                    <motion.a
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      className="btn btn-index"
+                    >
                       <i
                         className="ri-send-plane-line "
                         style={{ verticalAlign: "middle" }}
                       ></i>{" "}
                       LET'S GO
-                    </a>
+                    </motion.a>
                   </Link>
-                </div>
+                </motion.div>
               </Col>
             </Row>
           </Container>
-        </div>
+        </motion.div>
       </BasePage>
     </BaseLayout>
   );
