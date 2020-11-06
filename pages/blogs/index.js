@@ -14,7 +14,7 @@ function Blogs({ blogs, preview }) {
     view: { list: 0 },
     date: { asc: 0 },
   });
-  const { dataU, loadingU } = useGetUser();
+  const { data, loading } = useGetUser();
 
   // loadMore: to load more data
   // isLoadingMore: is true whenever we are making request to fetch data
@@ -26,7 +26,7 @@ function Blogs({ blogs, preview }) {
   });
 
   return (
-    <BaseLayout user={dataU} loading={loadingU}>
+    <BaseLayout user={data} loading={loading}>
       <BasePage title="Newest Blogs - Anuj Bansal" className="" linkFont>
         {preview && <PreviewAlert />}
         <FilteringMenu
