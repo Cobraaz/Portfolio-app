@@ -80,7 +80,6 @@ body {
   }
 
   .icons {
-    @include animation-delay(4.5s);
     font-size: 33px;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s;
   }
