@@ -11,6 +11,7 @@ import ShowComments from "components/Blogs/commentSection/ShowComments";
 import BlogContent from "components/Blogs/BlogContent";
 import PreviewAlert from "components/Blogs/PreviewAlert";
 import Fallback from "components/Blogs/Fallback";
+import Modal from "components/Modal";
 
 import { useGetUser } from "actions/user";
 import { getBlogBySlug, getAllBlogs } from "lib/api/blogs";
@@ -32,6 +33,9 @@ const BlogDetail = ({
   const router = useRouter();
   const { data, loading } = useGetUser();
   const { register, handleSubmit } = useForm();
+  const [showModal, setShowModal] = useState(false);
+
+  const toggle = () => setShowModal(false);
 
   useEffect(() => {
     let navbar = document.getElementsByClassName("port-navbar");
@@ -41,12 +45,22 @@ const BlogDetail = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (!loading && !window.__isModalLoaded) {
+      window.__isModalLoaded = true;
+      {
+        !data && setTimeout(() => setShowModal(true), 5000);
+      }
+    }
+  }, [loading]);
+
   const onSubmit = async (d, e) => {
     const errorMessage = () => {
       if (!d.comment) {
         return "Please first enter comment";
       } else if (!data) {
-        return "You are not login";
+        setShowModal(true);
+        return "";
       } else {
         return "Server Error";
       }
@@ -64,15 +78,17 @@ const BlogDetail = ({
 
       setComments(json.data);
     } else {
-      toast.error(`${errorMessage()}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
+      if (errorMessage().length > 0) {
+        toast.error(`${errorMessage()}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
   };
 
@@ -102,9 +118,10 @@ const BlogDetail = ({
   };
 
   return (
-    <>
+    <div onClick={() => showModal && toggle()}>
+      <Modal showModal={showModal} />
       <button size="sm" onClick={scrollToTop} className="scrollToTop">
-        <i class="ri-arrow-up-s-fill"></i>
+        <i className="ri-arrow-up-s-fill"></i>
       </button>
       <BaseLayout user={data} loading={loading}>
         <BasePage
@@ -156,7 +173,7 @@ const BlogDetail = ({
           </Row>
         </BasePage>
       </BaseLayout>
-    </>
+    </div>
   );
 };
 

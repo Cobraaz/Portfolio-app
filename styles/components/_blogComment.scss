@@ -151,16 +151,16 @@
 
 .write-new button {
   float: right;
-  background-color: #87bae1;
+  background-color: #9b5f5f;
   box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.12);
-  border-radius: 2px;
+  border-radius: 50px;
   border: 0;
   color: #ffffff;
   font-weight: bold;
   cursor: pointer;
-
   padding: 10px 25px;
   margin-top: 18px;
+  outline: none !important;
 }
 
 /* Responsive styles */
@@ -275,10 +275,6 @@
   .write-new textarea {
     color: #dcdcdc;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .write-new button {
     background-color: rgba(255, 255, 255, 0.1);
   }
 }
