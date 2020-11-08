@@ -9,6 +9,24 @@ import {
 } from "reactstrap";
 import Link from "next/link";
 import { urlFor } from "lib/api/blogs";
+import { motion } from "framer-motion";
+
+let easing = [0.6, -0.05, 0.01, 0.99];
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
 
 const CardItem = ({
   title,
@@ -21,7 +39,12 @@ const CardItem = ({
 }) => {
   return (
     <Card className={`fj-card ${mode}`}>
-      <div className="card-body-wrapper">
+      <motion.div
+        variants={fadeInUp}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="card-body-wrapper"
+      >
         <CardHeader className="d-flex flex-row">
           <div>
             {mode === "placeholder" ? (
@@ -42,7 +65,12 @@ const CardItem = ({
             )}
           </div>
         </CardHeader>
-        <div className="view overlay">
+        <motion.div
+          initial={{ x: 60, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="view overlay"
+        >
           {mode === "placeholder" ? (
             <div className="image-placeholder" />
           ) : (
@@ -51,7 +79,7 @@ const CardItem = ({
               alt="Card image cap"
             />
           )}
-        </div>
+        </motion.div>
         <CardBody>
           {mode === "placeholder" ? (
             <>
@@ -67,7 +95,7 @@ const CardItem = ({
             </>
           )}
         </CardBody>
-      </div>
+      </motion.div>
       {link && (
         <Link {...link}>
           <a className="card-button">Read More</a>

@@ -8,6 +8,15 @@ import PreviewAlert from "components/Blogs/PreviewAlert";
 
 import { useGetBlogsPages } from "actions/pagination";
 import { getPaginatedBlogs } from "lib/api/blogs";
+import { motion } from "framer-motion";
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 function Blogs({ blogs, preview }) {
   const [filter, setFilter] = useState({
@@ -28,30 +37,36 @@ function Blogs({ blogs, preview }) {
   return (
     <BaseLayout user={data} loading={loading}>
       <BasePage title="Newest Blogs - Anuj Bansal" className="" linkFont>
-        {preview && <PreviewAlert />}
-        <FilteringMenu
-          filter={filter}
-          onChange={(option, value) => {
-            setFilter({ ...filter, [option]: value });
-          }}
-        />
-        <hr />
-        <Row className="mb-5">{pages}</Row>
-        <div style={{ textAlign: "center" }}>
-          <Button
-            onClick={loadMore}
-            disabled={isReachingEnd || isLoadingMore}
-            size="lg"
-            outline
-            color="secondary"
-          >
-            {isLoadingMore
-              ? "..."
-              : isReachingEnd
-              ? "No more blogs"
-              : "More Blogs"}
-          </Button>
-        </div>
+        <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
+          {preview && <PreviewAlert />}
+          <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+            <FilteringMenu
+              filter={filter}
+              onChange={(option, value) => {
+                setFilter({ ...filter, [option]: value });
+              }}
+            />
+          </motion.div>
+          <hr />
+          <motion.div variants={stagger}>
+            <Row className="mb-5">{pages}</Row>
+          </motion.div>
+          <div style={{ textAlign: "center" }}>
+            <Button
+              onClick={loadMore}
+              disabled={isReachingEnd || isLoadingMore}
+              size="lg"
+              outline
+              color="secondary"
+            >
+              {isLoadingMore
+                ? "..."
+                : isReachingEnd
+                ? "No more blogs"
+                : "More Blogs"}
+            </Button>
+          </div>
+        </motion.div>
       </BasePage>
     </BaseLayout>
   );
