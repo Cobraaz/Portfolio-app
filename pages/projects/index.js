@@ -11,6 +11,15 @@ import {
   CardDeleteButton,
   CardEditButton,
 } from "components/shared/CardButtons";
+import { motion } from "framer-motion";
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 const Projects = ({ projects: initialProjects }) => {
   const [projects, setProjects] = useState(initialProjects);
@@ -31,56 +40,64 @@ const Projects = ({ projects: initialProjects }) => {
   return (
     <BaseLayout user={dataU} loading={loadingU}>
       <BasePage title="Newest Projects - Anuj Bansal" className="projects-page">
-        <h1 className="project-header-title">My Recent Works</h1>
-        <Row className="mt-3 mb-5">
-          {projects &&
-            projects.map((project, i) => {
-              return (
-                <Col key={project._id} lg="4" md="6">
-                  <ProjectCard data={project} i={i}>
-                    <>
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          className="mr-2 btn btn-info btn-sm"
-                        >
-                          Repositery{" "}
-                          <i
-                            style={{ verticalAlign: "middle" }}
-                            className={`ri-git-repository-fill mr-2 clickable icons `}
-                          ></i>
-                        </a>
-                      )}
-
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          className="mr-2 btn btn-success btn-sm"
-                        >
-                          Live{" "}
-                          <i
-                            style={{ verticalAlign: "middle" }}
-                            className={`ri-links-fill mr-2 clickable icons `}
-                          ></i>
-                        </a>
-                      )}
-                      {dataU && isAuthorized(dataU, "admin") && (
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+        >
+          <h1 className="project-header-title">My Recent Works</h1>
+          <motion.div variants={stagger} initial="initial" animate="animate">
+            <Row className="mt-3 mb-5">
+              {projects &&
+                projects.map((project, i) => {
+                  return (
+                    <Col key={project._id} lg="4" md="6">
+                      <ProjectCard data={project} i={i}>
                         <>
-                          <CardEditButton to={"projects"} data={project} />
-                          <CardDeleteButton
-                            data={project}
-                            deleteCard={_deleteProject}
-                          />
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              className="mr-2 btn btn-info btn-sm"
+                            >
+                              Repositery{" "}
+                              <i
+                                style={{ verticalAlign: "middle" }}
+                                className={`ri-git-repository-fill mr-2 clickable icons `}
+                              ></i>
+                            </a>
+                          )}
+
+                          {project.link && (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              className="mr-2 btn btn-success btn-sm"
+                            >
+                              Live{" "}
+                              <i
+                                style={{ verticalAlign: "middle" }}
+                                className={`ri-links-fill mr-2 clickable icons `}
+                              ></i>
+                            </a>
+                          )}
+                          {dataU && isAuthorized(dataU, "admin") && (
+                            <>
+                              <CardEditButton to={"projects"} data={project} />
+                              <CardDeleteButton
+                                data={project}
+                                deleteCard={_deleteProject}
+                              />
+                            </>
+                          )}
                         </>
-                      )}
-                    </>
-                  </ProjectCard>
-                </Col>
-              );
-            })}
-        </Row>
+                      </ProjectCard>
+                    </Col>
+                  );
+                })}
+            </Row>
+          </motion.div>
+        </motion.div>
       </BasePage>
     </BaseLayout>
   );

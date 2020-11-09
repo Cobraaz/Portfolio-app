@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/layouts/BasePage";
-import { Row, Col, Button } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import { useRouter } from "next/router";
 import { useGetUser } from "actions/user";
 import PortfolioApi from "lib/api/portfolios";
@@ -12,6 +12,16 @@ import {
   CardDeleteButton,
   CardEditButton,
 } from "components/shared/CardButtons";
+import { motion } from "framer-motion";
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
 const Portfolios = ({ portfolios: initialPortfolios }) => {
   const router = useRouter();
   const [portfolios, setPortfolios] = useState(initialPortfolios);
@@ -36,30 +46,41 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
         header="Portfolios"
         className="portfolio-page"
       >
-        <Row>
-          {portfolios.map((portfolio) => (
-            <Col
-              key={portfolio._id}
-              onClick={() => {
-                router.push("/portfolios/[id]", `/portfolios/${portfolio._id}`);
-              }}
-              lg="4"
-              md="6"
-            >
-              <PortfolioCard portfolio={portfolio}>
-                {dataU && isAuthorized(dataU, "admin") && (
-                  <>
-                    <CardEditButton to={"portfolios"} data={portfolio} />
-                    <CardDeleteButton
-                      data={portfolio}
-                      deleteCard={_deletePortfolio}
-                    />
-                  </>
-                )}
-              </PortfolioCard>
-            </Col>
-          ))}
-        </Row>
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div variants={stagger} initial="initial" animate="animate">
+            <Row>
+              {portfolios.map((portfolio) => (
+                <Col
+                  key={portfolio._id}
+                  onClick={() => {
+                    router.push(
+                      "/portfolios/[id]",
+                      `/portfolios/${portfolio._id}`
+                    );
+                  }}
+                  lg="4"
+                  md="6"
+                >
+                  <PortfolioCard portfolio={portfolio}>
+                    {dataU && isAuthorized(dataU, "admin") && (
+                      <>
+                        <CardEditButton to={"portfolios"} data={portfolio} />
+                        <CardDeleteButton
+                          data={portfolio}
+                          deleteCard={_deletePortfolio}
+                        />
+                      </>
+                    )}
+                  </PortfolioCard>
+                </Col>
+              ))}
+            </Row>
+          </motion.div>
+        </motion.div>
       </BasePage>
     </BaseLayout>
   );
