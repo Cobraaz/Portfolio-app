@@ -21,6 +21,44 @@ import { urlFor } from "lib/api/blogs";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 // import axios from "axios";
+import { motion } from "framer-motion";
+
+let easing = [0.6, -0.05, 0.01, 0.99];
+
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      delay: 0.5,
+      ease: easing,
+    },
+  },
+};
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      duration: 0.3,
+      yoyo: Infinity,
+    },
+  },
+};
 
 const BlogDetail = ({
   blog,
@@ -130,45 +168,54 @@ const BlogDetail = ({
         >
           <Row>
             <Col md={{ size: 8, offset: 2 }}>
-              {preview && <PreviewAlert />}
-              <BlogHeader
-                title={blog.title}
-                subtitle={blog.subtitle}
-                coverImage={urlFor(blog.coverImage).height(600).url()}
-                author={blog.author}
-                date={formatDate(blog.date, "LL")}
-              />
-              <hr />
-              {blog.content && <BlogContent content={blog.content} />}
-              <hr />
-              <h1>Development Mode</h1>
-              <ul className="comment-section">
-                {!_.isEmpty(comments) &&
-                  comments.map((comment, index) => (
-                    <div key={index}>
-                      <ShowComments
-                        comments={comment}
-                        index={index}
-                        deleteComment={_deleteComment}
-                        loginInUser={data ? data.sub : ""}
-                        extra={Boolean(index % 2)}
-                      />
-                    </div>
-                  ))}
-                <li className="write-new">
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <textarea
-                      placeholder="Write your comment here"
-                      name="comment"
-                      ref={register}
-                    ></textarea>
+              <motion.div
+                variants={stagger}
+                initial="initial"
+                animate="animate"
+                exit={{ opacity: 0 }}
+              >
+                {preview && <PreviewAlert />}
+                <BlogHeader
+                  title={blog.title}
+                  subtitle={blog.subtitle}
+                  coverImage={urlFor(blog.coverImage).height(600).url()}
+                  author={blog.author}
+                  date={formatDate(blog.date, "LL")}
+                />
+                <hr />
+                <motion.div variants={fadeInUp}>
+                  {blog.content && <BlogContent content={blog.content} />}
+                </motion.div>
+                <hr />
+                <motion.h1 variants={fadeInUp}>Development Mode</motion.h1>
+                <motion.ul variants={fadeInUp} className="comment-section">
+                  {!_.isEmpty(comments) &&
+                    comments.map((comment, index) => (
+                      <div key={index}>
+                        <ShowComments
+                          comments={comment}
+                          index={index}
+                          deleteComment={_deleteComment}
+                          loginInUser={data ? data.sub : ""}
+                          extra={Boolean(index % 2)}
+                        />
+                      </div>
+                    ))}
+                  <motion.li variants={fadeInUp} className="write-new">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                      <textarea
+                        placeholder="Write your comment here"
+                        name="comment"
+                        ref={register}
+                      ></textarea>
 
-                    <div>
-                      <button type="submit">Submit</button>
-                    </div>
-                  </form>
-                </li>
-              </ul>
+                      <motion.div>
+                        <button type="submit">Submit</button>
+                      </motion.div>
+                    </form>
+                  </motion.li>
+                </motion.ul>
+              </motion.div>
             </Col>
           </Row>
         </BasePage>
