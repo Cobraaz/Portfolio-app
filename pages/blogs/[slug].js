@@ -198,6 +198,7 @@ const BlogDetail = ({
                           deleteComment={_deleteComment}
                           loginInUser={data ? data.sub : ""}
                           extra={Boolean(index % 2)}
+                          blogcommentId={blogcommentId}
                         />
                       </div>
                     ))}
