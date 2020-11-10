@@ -18,12 +18,15 @@ const ShowComments = ({
     e.stopPropagation();
     try {
       setNoOfLikes(noOfLikes + 1);
+      setCommentLikes([{ user: authId }, ...commentLikes]);
+
       const { data: commentlikes } = await new BlogCommentsApi().like(
         blogcommentId,
         commentId,
         authId
       );
 
+      setNoOfLikes(commentlikes.length);
       setCommentLikes(commentlikes);
     } catch (err) {
       console.error(err.message);
@@ -35,11 +38,22 @@ const ShowComments = ({
     e.stopPropagation();
     try {
       setNoOfLikes(noOfLikes - 1);
+      const removeIndex = await commentLikes
+        .map((like) => like.user.toString())
+        .indexOf(authId);
+      if (removeIndex !== -1) {
+        setCommentLikes((commentLikes) =>
+          commentLikes.filter((_, i) => i !== removeIndex)
+        );
+      }
+
       const { data: commentlikes } = await new BlogCommentsApi().unLike(
         blogcommentId,
         commentId,
         authId
       );
+
+      setNoOfLikes(commentlikes.length);
       setCommentLikes(commentlikes);
     } catch (err) {
       console.error(err.message);
