@@ -6,6 +6,28 @@ import { useContactMe } from "actions/contact";
 import Redirect from "components/shared/Redirect";
 import { Row, Col, UncontrolledAlert, Spinner } from "reactstrap";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
+
+let easing = [0.6, -0.05, 0.01, 0.99];
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+  exit: {
+    x: "-100vh",
+    transition: { ease: "easeInOut" },
+  },
+};
 
 const Contact = () => {
   const { dataU, loadingU } = useGetUser();
@@ -30,7 +52,13 @@ const Contact = () => {
             sm={{ size: 6, offset: 3 }}
             xs={{ size: 12 }}
           >
-            <div className="form-wrapper">
+            <motion.div
+              className="form-wrapper"
+              variants={fadeInUp}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
               <h1>Drop a Line</h1>
               <ContactForm onSubmit={contactMe} />
               {loading && (
@@ -44,7 +72,7 @@ const Contact = () => {
                     {err.msg}
                   </UncontrolledAlert>
                 ))}
-            </div>
+            </motion.div>
           </Col>
         </Row>
       </BasePage>

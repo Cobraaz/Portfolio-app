@@ -3,6 +3,24 @@ import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/layouts/BasePage";
 import { useGetUser } from "actions/user";
 import { Row, Col } from "reactstrap";
+import { motion } from "framer-motion";
+
+let easing = [0.6, -0.05, 0.01, 0.99];
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
 
 const Cv = () => {
   const { data, loading } = useGetUser();
@@ -15,14 +33,22 @@ const Cv = () => {
             <Row>
               <Col md={{ size: 8, offset: 2 }}>
                 {width > 1500 ? (
-                  <div>
+                  <motion.div
+                    variants={fadeInUp}
+                    initial="initial"
+                    animate="animate"
+                  >
                     <iframe
                       style={{ width: "101%", height: "800px" }}
                       src="/AnujCv.pdf"
                     />
-                  </div>
+                  </motion.div>
                 ) : (
-                  <div>
+                  <motion.div
+                    variants={fadeInUp}
+                    initial="initial"
+                    animate="animate"
+                  >
                     <img
                       src="/images/AnujCvImg.jpg"
                       style={{ width: "100%", height: "500px" }}
@@ -38,7 +64,7 @@ const Cv = () => {
                         className={`ri-download-2-line mr-2 clickable icons `}
                       ></i>
                     </a>
-                  </div>
+                  </motion.div>
                 )}
               </Col>
             </Row>

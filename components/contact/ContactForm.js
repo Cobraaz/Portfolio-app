@@ -7,6 +7,8 @@ import {
   Input,
 } from "reactstrap";
 
+import { motion } from "framer-motion";
+
 const ContactForm = ({ onSubmit }) => {
   const { register, handleSubmit } = useForm();
 
@@ -72,9 +74,14 @@ const ContactForm = ({ onSubmit }) => {
         />
       </InputGroup>
       <InputGroup>
-        <Button type="submit" className="btn-contact" block>
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.95 }}
+          type="submit"
+          className="btn-contact"
+        >
           <i className="ri-save-2-line" style={{ float: "left" }}></i> Submit
-        </Button>
+        </motion.button>
       </InputGroup>
     </form>
   );
